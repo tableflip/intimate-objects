@@ -1,16 +1,28 @@
 extends ../layouts/default
 
 block content
-  .container.shapes
-    .col-xs-4
-      a.pyramid: h1 Upcoming Intimacy Labs
-    .col-xs-4
-      a.cube: h1 Explore
-    .col-xs-4
-      a.pyramid: h1 Upcoming Intimacy Labs
+  #home
+    .container.shapes
+      .col-xs-4
+        a.pyramid: h2 Upcoming Intimacy Labs
+      .col-xs-4
+        a.cube: h2 Explore
+      .col-xs-4
+        a.pyramid: h2 Upcoming Intimacy Labs
 
-  .container.counter
+    .container.counter
+      each digit in objectCount.toString()
+        span.digit= digit
+      span|  objects created
 
-  .container.upcoming-labs
+    .container.upcoming-labs
+      h2 Upcoming Intimacy Labs
+      a.h2.pull-right(href="/labs/register") Register interest
 
-  .container.explore
+      ul
+        each lab in upcomingLabs
+          li
+            a(href=lab.id)= lab.name
+            span.pull-right= lab.date
+
+    .container.explore

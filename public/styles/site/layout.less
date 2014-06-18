@@ -40,15 +40,61 @@
   }
   .counter {
     font-size: 32px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    padding: 0;
+    border: 1px solid black;
+    span {
+      padding: 15px 30px;
+    }
     .digit {
-      border-left: 1px solid black;
+      display: inline-block;
+      text-align: center;
       border-right: 1px solid black;
     }
   }
   .upcoming-labs, .explore {
     border-top: 1px solid black;
+  }
+  .upcoming-labs {
+    ul {
+      margin-top: 20px;
+      li {
+        font-size: 16px;
+        border-bottom: 1px dotted black;
+        a, a :hover {
+          color: black;
+        } 
+      }
+    }
+  }
+  .explore {
+    .row {
+      margin-bottom: 15px;
+      a {
+        display: block;
+        color: black;
+        width: 100%;
+        font-size: 24px;
+        line-height: 260px;
+        text-align: center;
+        text-decoration: none;
+      }
+      .polka {
+        background: url(../images/explore-polka.png) no-repeat;
+        background-size: 100% auto;
+      }
+      .dashed-right {
+        background: url(../images/explore-dashed-right.png) no-repeat;
+        background-size: 100% auto;
+      }
+      .dashed-left {
+        background: url(../images/explore-dashed-left.png) no-repeat;
+        background-size: 100% auto;
+      }
+      .hatched {
+        background: url(../images/explore-hatched.png) no-repeat;
+        background-size: 100% auto;
+      }
+    }
   }
 }
 #footer {

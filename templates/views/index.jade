@@ -19,10 +19,28 @@ block content
       h2 Upcoming Intimacy Labs
       a.h2.pull-right(href="/labs/register") Register interest
 
-      ul
+      ul.list-unstyled
         each lab in upcomingLabs
           li
-            a(href=lab.id)= lab.name
-            span.pull-right= lab.date
+            a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
 
     .container.explore
+      h2 Explore
+      .row
+        .col-sm-3
+          a.polka Design
+        .col-sm-3
+          a.dashed-right Thinker
+        .col-sm-3
+          a.hatched Discover
+        .col-sm-3
+          a.dashed-left Invite
+      .row
+        .col-sm-3
+          a.dashed-left Practice
+        .col-sm-3
+          a.hatched Reflect
+        .col-sm-3
+          a.dashed-right Workshop
+        .col-sm-3
+          a.polka Question

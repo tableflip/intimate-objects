@@ -4,11 +4,11 @@ block content
   #home
     .container.shapes
       .col-xs-4
-        a.pyramid: h2 Upcoming Intimacy Labs
+        a.pyramid: h3 Upcoming Intimacy Labs
       .col-xs-4
-        a.cube: h2 Explore
+        a.cube: h3 Explore
       .col-xs-4
-        a.pyramid: h2 Upcoming Intimacy Labs
+        a.pyramid: h3 Upcoming Intimacy Labs
 
     .container.counter
       each digit in objectCount.toString()
@@ -16,8 +16,8 @@ block content
       span|  objects created
 
     .container.upcoming-labs
-      h2 Upcoming Intimacy Labs
-      a.h2.pull-right(href="/labs/register") Register interest
+      h3 Upcoming Intimacy Labs
+      a.h3.pull-right(href="/labs/register") Register interest
 
       ul.list-unstyled
         each lab in upcomingLabs
@@ -25,22 +25,22 @@ block content
             a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
 
     .container.explore
-      h2 Explore
+      h3 Explore
       .row
-        .col-sm-3
+        .col-xs-3
           a.polka Design
-        .col-sm-3
+        .col-xs-3
           a.dashed-right Thinker
-        .col-sm-3
+        .col-xs-3
           a.hatched Discover
-        .col-sm-3
+        .col-xs-3
           a.dashed-left Invite
       .row
-        .col-sm-3
+        .col-xs-3
           a.dashed-left Practice
-        .col-sm-3
+        .col-xs-3
           a.hatched Reflect
-        .col-sm-3
+        .col-xs-3
           a.dashed-right Workshop
-        .col-sm-3
+        .col-xs-3
           a.polka Question

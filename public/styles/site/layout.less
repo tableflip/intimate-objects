@@ -13,7 +13,7 @@
   .container {
     margin: 30px auto;
   }
-  h2 {
+  h3 {
     display: inline-block;
   }
   .shapes {
@@ -23,8 +23,8 @@
       text-align: center;
       display: block;
       padding-bottom: 280px;
-      h2 {
-        height: 70px;
+      h3 {
+        height: 50px;
       }
     }
     .pyramid {
@@ -39,7 +39,7 @@
     }
   }
   .counter {
-    font-size: 32px;
+    font-size: 26px;
     padding: 0;
     border: 1px solid black;
     span {
@@ -67,14 +67,16 @@
     }
   }
   .explore {
+    h3 {
+    }
     .row {
-      margin-bottom: 15px;
+      margin-top: 30px;
       a {
         display: block;
         color: black;
         width: 100%;
-        font-size: 24px;
-        line-height: 260px;
+        font-size: 18px;
+        line-height: 220px;
         text-align: center;
         text-decoration: none;
       }
@@ -102,4 +104,66 @@
   border-top: 1px solid @gray-lighter;
   padding-top: 30px;
   color: @gray-light;
+}
+
+@media (max-width: @screen-lg-desktop) {
+  #home {
+    .shapes a {
+      padding-bottom: 230px;
+    }
+    .explore {
+      .row {
+        a {
+          line-height: 212px;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: @screen-desktop) {
+  #home {
+    .shapes a {
+      padding-bottom: 180px;
+    }
+    .explore {
+      .row {
+        a {
+          line-height: 160px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-tablet) {
+  #home {
+    .shapes a {
+      padding-bottom: 160px;
+    }
+    .explore {
+      .row {
+        a {
+          line-height: 157px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-phone) {
+  #home {
+    .shapes a {
+      padding-bottom: 110px;
+    }
+    .explore {
+      .row {
+        a {
+          line-height: 86px;
+          font-size: 10px;
+        }
+      }
+    }
+  }
 }

@@ -26,6 +26,8 @@ block content
           each lab in upcomingLabs
             li
               a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
+                span.name= lab.name
+                span.city.pull-right= lab.location.suburb
 
     .container
       #explore

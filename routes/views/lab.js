@@ -9,6 +9,7 @@ exports = module.exports = function (req, res) {
   var view = new keystone.View(req, res)
   locals.moment = require("moment")
   locals.config = config
+  locals._ = _
 
   var labId = req.params.labId
 

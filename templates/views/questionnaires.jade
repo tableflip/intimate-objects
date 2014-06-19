@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block content
+  #questionnaires
+    .container
+      h3 Questionnaires
+      ul.list-unstyled
+        each q in questionnaires
+          li: a(href="/questionnaires/"+q._id)= q.name
+      

@@ -19,4 +19,5 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index)
 	app.get('/labs/:labId', routes.views.lab)
   app.get('/questionnaires/:questionnaireId', routes.views.questionnaire)
+  app.get('/questionnaires', routes.views.questionnaires)
 }

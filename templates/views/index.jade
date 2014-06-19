@@ -5,20 +5,20 @@ block content
     .container
       .shapes
         .col-xs-4
-          a.pyramid: h3 Upcoming Intimacy Labs
+          a.pyramid(href="#upcoming-labs"): h3 Upcoming Intimacy Labs
         .col-xs-4
-          a.cube: h3 Explore
+          a.cube(href="#explore"): h3 Explore
         .col-xs-4
-          a.pyramid: h3 Upcoming Intimacy Labs
+          a.pyramid(href="#upcoming-labs"): h3 Upcoming Intimacy Labs
 
     .container
-      .counter
+      #counter
         each digit in objectCount.toString()
           span.digit= digit
         span|  objects created
 
     .container
-      .upcoming-labs
+      #upcoming-labs
         h3 Upcoming Intimacy Labs
         a.h3.pull-right(href="/labs/register"): small Register interest
 
@@ -28,7 +28,7 @@ block content
               a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
 
     .container
-      .explore
+      #explore
         h3 Explore
         .row
           .col-sm-3.col-xs-6

@@ -9,6 +9,6 @@ block content
         p.description!= lab.description
       if lab.location
         .col-sm-6
-          iframe.map(src="https://www.google.com/maps/embed/v1/place?key="+config.googleApiKey+"&q="+lab.location.serialised,
+          iframe.map(src="https://www.google.com/maps/embed/v1/place?key="+config.googleApiKey+"&q='"+lab.location.serialised+"'",
           width="100%",
           height="300px")

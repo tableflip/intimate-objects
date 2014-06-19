@@ -17,7 +17,8 @@ exports = module.exports = function(app) {
 	
 	// Views
 	app.get('/', routes.views.index)
-	app.get('/labs/:labId', routes.views.lab)
+	app.get('/register-interest', routes.views.register)
+  app.get('/labs/:labId', routes.views.lab)
   app.get('/questionnaires/:questionnaireId', routes.views.questionnaire)
   app.get('/questionnaires', routes.views.questionnaires)
 }

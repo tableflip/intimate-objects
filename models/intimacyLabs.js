@@ -2,11 +2,6 @@ var _ = require('underscore')
 var keystone = require('keystone')
 var Types = keystone.Field.Types
 
-/**
- * Users
- * =====
- */
-
 var IntimacyLab = new keystone.List('IntimacyLab')
 
 IntimacyLab.add({
@@ -15,10 +10,6 @@ IntimacyLab.add({
   location: { type: Types.Location, initial: true } ,
   description: {type: Types.Html, wysiwyg: true, height: 250}
 })
-
-/**
- * Registration
- */
 
 IntimacyLab.defaultColumns = 'name, date'
 IntimacyLab.register()

@@ -2,45 +2,65 @@ extends ../layouts/default
 
 block content
   #home
-    .container.shapes
-      .col-xs-4
-        a.pyramid: h3 Upcoming Intimacy Labs
-      .col-xs-4
-        a.cube: h3 Explore
-      .col-xs-4
-        a.pyramid: h3 Upcoming Intimacy Labs
+    .container
+      .shapes
+        .col-xs-4
+          a.pyramid: h3 Upcoming Intimacy Labs
+        .col-xs-4
+          a.cube: h3 Explore
+        .col-xs-4
+          a.pyramid: h3 Upcoming Intimacy Labs
 
-    .container.counter
-      each digit in objectCount.toString()
-        span.digit= digit
-      span|  objects created
+    .container
+      .counter
+        each digit in objectCount.toString()
+          span.digit= digit
+        span|  objects created
 
-    .container.upcoming-labs
-      h3 Upcoming Intimacy Labs
-      a.h3.pull-right(href="/labs/register") Register interest
+    .container
+      .upcoming-labs
+        h3 Upcoming Intimacy Labs
+        a.h3.pull-right(href="/labs/register"): small Register interest
 
-      ul.list-unstyled
-        each lab in upcomingLabs
-          li
-            a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
+        ul.list-unstyled
+          each lab in upcomingLabs
+            li
+              a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
 
-    .container.explore
-      h3 Explore
-      .row
-        .col-xs-3
-          a.polka(href="/explore/design") Design
-        .col-xs-3
-          a.dashed-right(href="/explore/thinker") Thinker
-        .col-xs-3
-          a.hatched(href="/explore/discover") Discover
-        .col-xs-3
-          a.dashed-left(href="/explore/invite") Invite
-      .row
-        .col-xs-3
-          a.dashed-left(href="/explore/practice") Practice
-        .col-xs-3
-          a.hatched(href="/explore/reflect") Reflect
-        .col-xs-3
-          a.dashed-right(href="/explore/workshop") Workshop
-        .col-xs-3
-          a.polka(href="/explore/question") Question
+    .container
+      .explore
+        h3 Explore
+        .row
+          .col-sm-3.col-xs-6
+            a.square.polka(href="/explore/design") 
+              img(src="images/square-hack.png").square-hack
+              span Design
+          .col-sm-3.col-xs-6
+            a.square.dashed-right(href="/explore/thinker") 
+              img(src="images/square-hack.png").square-hack
+              span Thinker
+          .col-sm-3.col-xs-6
+            a.square.hatched(href="/explore/discover") 
+              img(src="images/square-hack.png").square-hack
+              span Discover
+          .col-sm-3.col-xs-6
+            a.square.dashed-left(href="/explore/invite") 
+              img(src="images/square-hack.png").square-hack
+              span Invite
+        .row
+          .col-sm-3.col-xs-6
+            a.square.dashed-left(href="/explore/practice") 
+              img(src="images/square-hack.png").square-hack
+              span Practice
+          .col-sm-3.col-xs-6
+            a.square.hatched(href="/explore/reflect") 
+              img(src="images/square-hack.png").square-hack
+              span Reflect
+          .col-sm-3.col-xs-6
+            a.square.dashed-right(href="/explore/workshop") 
+              img(src="images/square-hack.png").square-hack
+              span Workshop
+          .col-sm-3.col-xs-6
+            a.square.polka(href="/explore/question") 
+              img(src="images/square-hack.png").square-hack
+              span Question

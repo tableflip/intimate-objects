@@ -4,27 +4,35 @@ require('dotenv')().load();
 
 // Require keystone
 var keystone = require('keystone');
+var config = require("config")
 
-keystone.init({
-	
-	'name': 'intimate objects',
-	'brand': 'intimate objects',
-	
-	'less': 'public',
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
-	
-	'views': 'templates/views',
-	'view engine': 'jade',
-	
-	'auto update': true,
-	
-	'session': true,
-	'auth': true,
-	'user model': 'User',
-	'cookie secret': 'Nv9GQf,"?Id*!W7)!e4QR,;Olq@`^%t,T^5JW7?8r,pt,#%S,b%uW+lo{p#F&KqT'
-	
-});
+var keystoneConfig = {
+  
+  'name': 'intimate objects',
+  'brand': 'intimate objects',
+  
+  'less': 'public',
+  'static': 'public',
+  'favicon': 'public/favicon.ico',
+  
+  'views': 'templates/views',
+  'view engine': 'jade',
+  
+  'auto update': true,
+  
+  'session': true,
+  'auth': true,
+  'user model': 'User',
+  'cookie secret': 'Nv9GQf,"?Id*!W7)!e4QR,;Olq@`^%t,T^5JW7?8r,pt,#%S,b%uW+lo{p#F&KqT'
+  
+}
+
+if (config.mongo) {
+  keystoneConfig.mongo = config.mongo
+}
+
+keystone.init(keystoneConfig);
+
 
 keystone.import('models');
 

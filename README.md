@@ -1,6 +1,19 @@
-intimate-objects
-================
+# Intimate Objects
 
-- npm install
-- mongod
-- node keystone
+## Getting started
+
+### Install dependencies
+
+Install NodeJS
+Install MongoDB
+
+```sh
+npm install
+```
+
+### Run
+
+```sh
+mongod
+npm start
+```

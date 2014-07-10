@@ -15,6 +15,7 @@ html
 		//- Customise the stylesheet for your site by editing /public/styles/site.less
 		//- All .less files will be automatically compiled and minified in production.
 
+		link(href="/styles/jquery.mmenu.all.css", rel="stylesheet")
 		link(href="/styles/site.min.css", rel="stylesheet")
 
 		//- This file provides the default styling for the KeystoneJS Content Editor
@@ -36,28 +37,40 @@ html
 
 	//- HTML BODY
 	body
+		div
+			a(id="hamburger" class="mm-fixed-top" href="#menu" title="Open the menu")
+				span
 
-		//- HEADER
-		#header: .container
+			//- HEADER
+			#header: .container
 
-			a.io-logo(href="/")
+				a.io-logo(href="/")
 
-		//- BODY
-		#body
+				nav(id="menu")
+					div
+						ul.List
+							li
+								a(href="/")="Home"
+							li
+								a(href="/about")="About"
+							li
+								a(href="/contact")="Contact"
+			//- BODY
+			#body
 
-			//- NOTE:
-			//- There is no .container wrapping class around body blocks to allow more flexibility in design.
-			//- Remember to include it in your templates when you override the intro and content blocks!
+				//- NOTE:
+				//- There is no .container wrapping class around body blocks to allow more flexibility in design.
+				//- Remember to include it in your templates when you override the intro and content blocks!
 
-			//- The Intro block appears above flash messages (used for temporary information display)
-			block intro
+				//- The Intro block appears above flash messages (used for temporary information display)
+				block intro
 
-			//- Flash messages allow you to display once-off status messages to users, e.g. form
-			//- validation errors, success messages, etc.
-			+flash-messages(messages)
+				//- Flash messages allow you to display once-off status messages to users, e.g. form
+				//- validation errors, success messages, etc.
+				+flash-messages(messages)
 
-			//- The content block should contain the body of your template's content
-			block content
+				//- The content block should contain the body of your template's content
+				block content
 
 
 		//- FOOTER
@@ -74,6 +87,9 @@ html
 		//- Customise which Bootstrap javascript files are served by including
 		//- them specifically here, instead of bootstrap-3.1.0.min.js
 		script(src='/js/lib/bootstrap/bootstrap-3.1.0.min.js')
+
+		script(src='/js/lib/jquery.mmenu.min.all.js')
+		script(src='/js/main.js')
 
 		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
 		//- which generate links to edit content for users who can access Keystone

@@ -1,3 +1,7 @@
+body{
+  font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
+}
+
 #header {
   .io-logo {
     display: block;
@@ -109,21 +113,14 @@ html.mm-opening #hamburger:after {
       color: black;
       text-decoration: none;
       text-align: center;
-      display: block;
-      padding-bottom: 280px;
+      display: none;
       h3 {
         height: 50px;
       }
     }
     .pyramid {
-      background: url(../images/shape-pyramid.png) no-repeat;
-      background-position: center bottom;
-      background-size: 66% auto;
     }
     .cube {
-      background: url(../images/shape-cube.png) no-repeat;
-      background-position: center bottom;
-      background-size: 66% auto;
     }
   }
   #counter {
@@ -138,9 +135,6 @@ html.mm-opening #hamburger:after {
       text-align: center;
       border-right: 1px solid black;
     }
-  }
-  #upcoming-labs, #explore {
-    border-top: 1px solid black;
   }
   #upcoming-labs {
     ul {
@@ -221,12 +215,14 @@ html.mm-opening #hamburger:after {
   padding-top: 30px;
   color: @gray-light;
 }
+@media (min-width: 600px) {
+  #home .shapes a {
+	  display: block;
+  }
+}
 
 @media (max-width: @screen-lg-desktop) {
   #home {
-    .shapes a {
-      padding-bottom: 230px;
-    }
     #explore {
       .row {
         a.square {
@@ -238,9 +234,6 @@ html.mm-opening #hamburger:after {
 }
 @media (max-width: @screen-desktop) {
   #home {
-    .shapes a {
-      padding-bottom: 180px;
-    }
     #explore {
       .row {
         a.square {
@@ -262,9 +255,6 @@ html.mm-opening #hamburger:after {
         padding: 5px;
       }
     }
-    .shapes a {
-      padding-bottom: 160px;
-    }
     #explore {
       .row {
         a.square {
@@ -276,9 +266,6 @@ html.mm-opening #hamburger:after {
 
 @media (max-width: @screen-phone) {
   #home {
-    .shapes a {
-      padding-bottom: 110px;
-    }
     #explore {
       .row {
         a.square {

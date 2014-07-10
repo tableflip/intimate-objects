@@ -9,4 +9,12 @@ $(document).ready(function () {
     e.preventDefault()
     $("#menu").trigger("open.mm")
   })
+  
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 200) {
+      $("html").addClass("off-top")
+    } else {
+      $("html").removeClass("off-top")
+    }
+  })
 })

@@ -1,5 +1,7 @@
 body{
   font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 h1, h2, h3, .h1, .h2, .h3{
   letter-spacing: 3px;
@@ -54,11 +56,11 @@ img.square-hack {
   }
   h3 {
     text-transform: uppercase;
-    display: inline-block;
   }
   .shapes {
     h3{
       font-weight: 300;
+
     }
     a {
       color: black;
@@ -102,7 +104,7 @@ img.square-hack {
       }
     }
     .date{
-      width:8em;
+      width:11em;
       display: inline-block;
     }
     .register{
@@ -116,41 +118,62 @@ img.square-hack {
     }
   }
   #explore {
-    h3 {
-    }
-    .row {
-      a.square {
-        display: block;
-        position: relative;
-        color: black;
-        width: 100%;
-        font-size: 18px;
-        text-decoration: none;
-        margin-top: 30px;
+
+    .square {
+      display: inline-block;
+      position: relative;
+      width: calc(~"20% - 30px");
+      min-width: 150px;
+      margin: 15px 30px 15px 0;
+
+      .content{
+        position: absolute;
+        top: 45%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+
         span {
-          position: absolute;
-          top: 44%;
-          width: 100%;
-          text-align: center;
-          left: 0;
+          min-width:60%;
+          margin:0 auto;
+          padding: 5px;
+          background: white;
+          color: black;
+          font-weight: 300;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          font-size:14px;
         }
       }
-      .polka {
-        background: url(../images/explore-polka.png) no-repeat;
-        background-size: 100% auto;
-      }
-      .dashed-right {
-        background: url(../images/explore-dashed-right.png) no-repeat;
-        background-size: 100% auto;
-      }
-      .dashed-left {
-        background: url(../images/explore-dashed-left.png) no-repeat;
-        background-size: 100% auto;
-      }
-      .hatched {
-        background: url(../images/explore-hatched.png) no-repeat;
-        background-size: 100% auto;
-      }
+    }
+    .square:last-child{
+      margin-left: 0;
+    }
+    .square:before{
+      content: "";
+      display: block;
+      padding-top: 100%; 	/* ratio of 1:1*/
+    }
+    .polka {
+      background: url(/images/gif/dots.gif) no-repeat;
+      background-size: 100% auto;
+    }
+    .dashed-right {
+      background: url(../images/gif/lines.gif) no-repeat;
+      background-size: 100% auto;
+    }
+    .dashed-left {
+      background: url(../images/gif/line_lines.gif) no-repeat;
+      background-size: 100% auto;
+    }
+    .hatched {
+      background: url(../images/gif/square.gif) no-repeat;
+      background-size: 100% auto;
+    }
+    .crossed {
+      background: url(../images/gif/ex5.gif) no-repeat;
+      background-size: 100% auto;
     }
   }
 }

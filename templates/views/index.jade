@@ -24,36 +24,29 @@ block content
           each lab in upcomingLabs
             li
               a(href="/labs/"+lab.id)
-                span.date= moment(lab.date).format("DD / MM / YY")
+                span.date= moment(lab.date).format("DD/MM/YY")
                 span.location= lab.location.suburb
                 span.arrow.pull-right &rarr;
-                span.register.pull-right Register interest
-
+                span.register.pull-right.hidden-xs Register interest
 
     .container
       #explore
         h3 Explore
-        .row
-          //.col-sm-3.col-xs-6
-          //  a.square.polka(href="/explore/design")
-          //    img(src="images/square-hack.png").square-hack
-          //    span Design
-          .col-sm-3.col-xs-6
-            a.square.dashed-right(href="")
-              img(src="images/square-hack.png").square-hack
-              span Field Guide
-          .col-sm-3.col-xs-6
-            a.square.hatched(href="/explore/practice")
-              img(src="images/square-hack.png").square-hack
-              span Practice
-          .col-sm-3.col-xs-6
-            a.square.dashed-left(href="")
-              img(src="images/square-hack.png").square-hack
-              span Question
-          .col-sm-3.col-xs-6
-            a.square.polka(href="")
-              img(src="images/square-hack.png").square-hack
-              span Labs
+        a.square.polka(href="/explore/design")
+          .content
+            span Design
+        a.square.dashed-right(href="")
+          .content
+            span Field Guide
+        a.square.hatched(href="/explore/practice")
+          .content
+            span Practice
+        a.square.dashed-left(href="")
+          .content
+            span Question
+        a.square.crossed(href="")
+          .content
+            span Labs
 
     .container
       #about

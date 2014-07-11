@@ -20,14 +20,15 @@ block content
     .container
       #upcoming-labs
         h3 Upcoming Intimacy Labs
-        a.h3.pull-right(href="/register-interest"): small Register interest
-
         ul.list-unstyled
           each lab in upcomingLabs
             li
-              a(href="/labs/"+lab.id): span= moment(lab.date).format("DD/MM/YY")
-                span.name= lab.name
-                span.city.pull-right= lab.location.suburb
+              a(href="/labs/"+lab.id)
+                span.date= moment(lab.date).format("DD / MM / YY")
+                span.location= lab.location.suburb
+                span.arrow.pull-right &rarr;
+                span.register.pull-right Register interest
+
 
     .container
       #explore

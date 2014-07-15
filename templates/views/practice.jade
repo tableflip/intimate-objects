@@ -1,18 +1,25 @@
 extends ../layouts/home
 
 block content
+
   .container
     h2 practice
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim..
 
     section
-      h3.box Where to start?
+      h3.box(data-toggle="collapse", data-target=".cards") Where to start?
+      .cards.collapse
+        each card in [ "TOUCH", "SMELL", "GAZE", "SPACE", "HOLD", "REVEAL", "FEELING", "PRIVATE"]
+          .card=card
 
     section
-      h3.box Some visual inspiration
+      h3.box(data-toggle="collapse", data-target=".inspiration") Some visual inspiration
+      .inspiration.collapse
+        img(src="http://33.media.tumblr.com/334e20a0491b7176c825f6cb5b3ad137/tumblr_mua03qrVxZ1suhdw4o1_500.gif")
 
     section
-      h3.box Something to try
+      h3.box(data-toggle="collapse", data-target=".tryme") Something to try
+      .tryme
 
 block js
   script(src='/js/lib/three.min.js')

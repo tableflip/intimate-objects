@@ -3,11 +3,12 @@ block content
   .container
     #upcoming-labs
       h2 Upcoming Intimacy Labs
-        ul.list-unstyled
-          each lab in labs
-            li
-              a(href="/labs/"+lab.id)
-                span.date= moment(lab.date).format("DD/MM/YY")
-                span.location= lab.location.suburb
-                span.arrow.pull-right &rarr;
-                span.register.pull-right.hidden-xs Register interest
+      
+      ul.list-unstyled
+        each lab in labs
+          li
+            a(href="/labs/"+lab.id)
+              span.date= moment(lab.date).format("DD/MM/YY")
+              span.location= lab.location.suburb
+              span.arrow.pull-right &rarr;
+              span.register.pull-right.hidden-xs Register interest

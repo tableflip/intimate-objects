@@ -20,8 +20,9 @@ exports = module.exports = function(app) {
 	app.get('/register-interest', routes.views.register)
   app.get('/labs/:labId', routes.views.lab)
   app.get('/labs', routes.views.labs)
-  app.get('/questionnaires/:questionnaireId', routes.views.questionnaire)
-  app.get('/questionnaires', routes.views.questionnaires)
+  app.get('/question/:questionnaireId', routes.views.questionnaire)
+  app.get('/question', routes.views.questionnaires)
   app.get('/practice', routes.views.practice)
   app.get('/field-guide', routes.views['field-guide'])
+  app.get('/discover', routes.views.discover)
 }

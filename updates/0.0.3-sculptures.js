@@ -12,25 +12,7 @@ var sculptures = [
   { name: 'Object 7' },
   { name: 'Object 8' },
   { name: 'Object 9' },
-  { name: 'Object 10' },
-  { name: 'Object 11' },
-  { name: 'Object 12' },
-  { name: 'Object 13' },
-  { name: 'Object 14' },
-  { name: 'Object 15' },
-  { name: 'Object 16' },
-  { name: 'Object 17' },
-  { name: 'Object 18' },
-  { name: 'Object 19' },
-  { name: 'Object 20' },
-  { name: 'Object 21' },
-  { name: 'Object 22' },
-  { name: 'Object 23' },
-  { name: 'Object 24' },
-  { name: 'Object 25' },
-  { name: 'Object 26' },
-  { name: 'Object 27' },
-  { name: 'Object 28' }
+  { name: 'Object 10' }
 ];
 
 function createSculpture (sculpture, done) {

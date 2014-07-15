@@ -37,11 +37,11 @@ canvas{
   .strapline {
     display: block;
     width:22em;
-    padding:5px 10px;
+    padding:10px 0 10px 11px;
     border-left:solid 1px #333;
     position: relative;
     left:220px;
-    top:60px;
+    top:54px;
     font-size: 16px;
     font-style:italic;
     color:#333;
@@ -254,7 +254,29 @@ body.practice{
     vertical-align: middle;
   }
 }
-
+.discover{
+  .object{
+    display: inline-block;
+    width: 220px;
+    height:210px;
+    margin: 0 20px 100px 0;
+    img{
+      width:100%;
+    }
+    label{
+      font-weight: 200;
+      display: block;
+    }
+    label:after{
+      content:"";
+      display: block;
+      border:solid 1px #333;
+      border-bottom:none;
+      height:6px;
+      margin-top:8px;
+    }
+  }
+}
 
 #lab {
   iframe {

@@ -2,13 +2,15 @@ var keystone = require('keystone')
 var async = require("async")
 var IntimacyLab = keystone.list("IntimacyLab")
 var Sculpture = keystone.list("Sculpture")
+var moment = require("moment")
 
-exports = module.exports = function(req, res) {
-	
-	var locals = res.locals
-	var view = new keystone.View(req, res)
-  locals.moment = require("moment")
-	
+module.exports = function(req, res) {
+
+  var view = new keystone.View(req, res)
+  var locals = res.locals
+  locals.moment = moment
+  locals.bodyClass = ['home']
+
   var dbTasks = [
     function (cb) {
       IntimacyLab.model.find()

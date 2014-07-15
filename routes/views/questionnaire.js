@@ -2,7 +2,7 @@ var keystone = require('keystone')
 var config = require("config")
 var Questionnaire = keystone.list("Questionnaire")
 
-exports = module.exports = function (req, res) {
+module.exports = function (req, res) {
   
   var locals = res.locals
   var view = new keystone.View(req, res)

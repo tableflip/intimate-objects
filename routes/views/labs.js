@@ -4,20 +4,20 @@ var config = require("config")
 var IntimacyLab = keystone.list("IntimacyLab")
 
 module.exports = function (req, res) {
-  
+
   var locals = res.locals
   var view = new keystone.View(req, res)
   locals.moment = require("moment")
   locals.config = config
   locals._ = _
 
-  var labId = req.params.labId
-
-  IntimacyLab.model.findOne({ _id: labId }).exec(function (err, lab) {
-    if (err) console.error(err)
-
-    locals.lab = lab
-
-    view.render("lab")
-  })
+  IntimacyLab.model
+    .find()
+    .sort({"date": "-1"})
+    .limit(3)
+    .exec(function (err, labs) {
+      if (err) return console.error(err)
+      locals.labs = labs
+      view.render("labs")
+    })
 }

@@ -5,21 +5,15 @@ block content
     .container
       .shapes
         .col-xs-4
-          a.cube(href="#upcoming-labs"): h3 Intimacy Labs
+          a.cube(href="#upcoming-labs"): h2 Intimacy Labs
         .col-xs-4
-          a.torus(href="#explore"): h3 Explore
+          a.torus(href="#explore"): h2 Explore
         .col-xs-4
-          a.pyramid(href="#upcoming-labs"): h3 About
-
-    .container
-      //#counter
-      //  each digit in objectCount.toString()
-      //    span.digit= digit
-      //  span|  objects created
+          a.pyramid(href="#upcoming-labs"): h2 About
 
     .container
       #upcoming-labs
-        h3 Upcoming Intimacy Labs
+        h2 Upcoming Intimacy Labs
         ul.list-unstyled
           each lab in upcomingLabs
             li
@@ -31,31 +25,31 @@ block content
 
     .container
       #explore
-        h3 Explore
-        a.square.polka(href="/explore/design")
+        h2 Explore
+        a.square.polka(href="/design")
           .content
             span Design
-        a.square.dashed-right(href="")
+        a.square.dashed-right(href="/field-guide")
           .content
             span Field Guide
-        a.square.hatched(href="/explore/practice")
+        a.square.hatched(href="/practice")
           .content
             span Practice
-        a.square.dashed-left(href="")
+        a.square.dashed-left(href="/question")
           .content
             span Question
-        a.square.crossed(href="")
+        a.square.crossed(href="/labs")
           .content
             span Labs
 
     .container
       #about
-        h3 About
+        h2 About
         p Intimate Objects cares about developing a world of deepening intimacy &ndash; part sexual intimacy and part intimacy that exists beyond or outside either of those things. It’s all about each person interpreting what that means for themselves, and where they’d like to, sharing that with others.
 
     .container
       #contact
-        h3 Contact
+        h2 Contact
         p For more information please contact <a mailto:"cassie@cassierobinson.net">cassie@cassierobinson.net</a>
 
 block js

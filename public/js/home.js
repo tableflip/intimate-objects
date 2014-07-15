@@ -65,20 +65,21 @@ function shape (selector, makeShape) {
 
 function makeCube(){
 	var cubeSize = 18;
-	var shapeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+//	var material = new THREE.MeshLambertMaterial({color: 0xffffff});
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
 	var cubeGeometry = new THREE.CubeGeometry(cubeSize,cubeSize,cubeSize);
-	var obj = new THREE.Mesh(cubeGeometry,shapeMaterial);
+	var obj = new THREE.Mesh(cubeGeometry, material);
 	obj.position.x = 0;
 	obj.position.y = 12;
 	obj.castShadow = true;
 	obj.receiveShadow = false;
 	return obj
 }
-
 function makeTorus(){
 	var size = 14;
 	var geometry = new THREE.TorusGeometry( size, 3, 10, 30 );
-	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
+//	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
 	var obj = new THREE.Mesh(geometry, material);
 	obj.position.x = 0;
 	obj.position.y = 12;
@@ -89,17 +90,30 @@ function makeTorus(){
 function makePyramid(){
 	var size = 18;
 	var geometry = new THREE.TetrahedronGeometry(size);
-	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
+//	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
 	var obj = new THREE.Mesh(geometry, material);
 	obj.position.x = 0;
 	obj.position.y = 12;
 	obj.rotation.z = 50;
 	obj.castShadow = true;
-  	obj.receiveShadow = false;
+  obj.receiveShadow = false;
 	return obj
 }
+function makeSphere () {
+  var size = 14;
+  var geometry = new THREE.SphereGeometry(size);
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
+  var obj = new THREE.Mesh(geometry, material);
+  obj.position.x = 0;
+  obj.position.y = 12;
+  obj.castShadow = true;
+  obj.receiveShadow = false;
+  return obj
+}
+
 
 /*if (window.innerWidth < 600) return;*/
 shape(".cube", makeCube)
-shape(".torus", makeTorus)
+shape(".torus", makeSphere)
 shape(".pyramid", makePyramid)

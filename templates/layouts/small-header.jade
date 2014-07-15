@@ -15,6 +15,9 @@ html
     //- Customise the stylesheet for your site by editing /public/styles/site.less
     //- All .less files will be automatically compiled and minified in production.
 
+    link(href="https://cloud.typography.com/6304912/795104/css/fonts.css", rel="stylesheet")
+    //link(href="/styles/fonts.css", rel="stylesheet")
+
     link(href="/styles/site.min.css", rel="stylesheet")
 
     //- This file provides the default styling for the KeystoneJS Content Editor
@@ -35,7 +38,7 @@ html
     block head
 
   //- HTML BODY
-  body
+  body(class= bodyClass)
 
     //- HEADER
     #header.small-header: .container

@@ -23,12 +23,20 @@ var keystoneConfig = {
   'session': true,
   'auth': true,
   'user model': 'User',
-  'cookie secret': 'Nv9GQf,"?Id*!W7)!e4QR,;Olq@`^%t,T^5JW7?8r,pt,#%S,b%uW+lo{p#F&KqT'
-  
+  'cookie secret': 'Nv9GQf,"?Id*!W7)!e4QR,;Olq@`^%t,T^5JW7?8r,pt,#%S,b%uW+lo{p#F&KqT',
+
+  'emails': 'templates/emails'
 }
 
 if (config.mongo) {
   keystoneConfig.mongo = config.mongo
+}
+
+if (config.mandrillApiKey) {
+  keystoneConfig['mandrill api key'] = config.mandrillApiKey
+  keystoneConfig['mandrill username'] = config.mandrillUsername
+} else {
+  console.warn("Missing SMTP server config!")
 }
 
 keystone.init(keystoneConfig);

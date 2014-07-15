@@ -1,3 +1,6 @@
 {
-  "googleApiKey": "AIzaSyBXZpv_R4q6dFvxXH_-DLpEPrhD-NNjgqI"
+  "googleApiKey": "AIzaSyBXZpv_R4q6dFvxXH_-DLpEPrhD-NNjgqI",
+  "mandrillApiKey": "",
+  "mandrillUsername": "",
+  "labEmail": "labs@intimateobjects.io"
 }

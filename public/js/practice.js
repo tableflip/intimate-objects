@@ -36,6 +36,7 @@ $(document).on('keydown', function (evt) {
   }
 })
 
+
 $(document).on('click', '.cards .card', function(evt){
   var text = $(evt.target).text()
   $('.fullscreen .card').text(text)

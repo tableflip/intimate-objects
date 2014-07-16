@@ -1,0 +1,18 @@
+extends ../layouts/home
+block content
+  .container
+    .row
+      .col-sm-6
+        .object
+          if obj.img
+            img(src= obj.img)
+          else
+            .no-image
+          label.meta= obj._id
+
+      .col-sm-6
+        h2= obj.name
+        if obj.creator
+          h3.creator= obj.creator
+
+        p= obj.description

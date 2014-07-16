@@ -23,6 +23,10 @@ p {
 canvas{
   background:white;
 }
+.no-image{
+  display: block;
+  background: #333;
+}
 #header {
   .container {
     margin:0 auto;
@@ -290,27 +294,63 @@ body.practice{
     vertical-align: middle;
   }
 }
-.discover{
+
+.object {
+  .meta{
+    margin-top: 6px;
+    font-weight: 200;
+    display: block;
+    color:#333;
+  }
+  .meta:before{
+    content:"#";
+    font-weight:400;
+  }
+  .meta:after{
+    content:"";
+    display: block;
+    border:solid 1px #333;
+    border-bottom:none;
+    height:6px;
+    margin-top:8px;
+  }
+}
+
+body.discover{
   .object{
     display: inline-block;
     width: 220px;
-    height:210px;
-    margin: 0 20px 100px 0;
-    img{
-      width:100%;
+    margin: 0 20px 80px 0;
+    img, .no-image{
+      height:210px;
     }
-    label{
-      font-weight: 200;
-      display: block;
-    }
-    label:after{
-      content:"";
-      display: block;
-      border:solid 1px #333;
-      border-bottom:none;
-      height:6px;
-      margin-top:8px;
-    }
+  }
+}
+
+body.sculpture{
+  .no-image{
+    display: block;
+  }
+  .no-image:before{
+    content:"";
+    display: block;
+    width:0;
+    padding-top: 100%;
+  }
+  h2{
+    padding-top: 0;
+  }
+  .creator{
+    padding-top: 0;
+    font-weight: 200;
+    font-style: italic;
+  }
+  .creator:before{
+    content: "By ";
+    font-style: normal;
+  }
+  .meta{
+    font-size: 16px;
   }
 }
 

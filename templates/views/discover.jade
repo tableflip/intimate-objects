@@ -1,10 +1,14 @@
-extends ../layouts/small-header
+extends ../layouts/home
 block content
   .container
     h2 Discover
 
     each obj, index in objects
       div.object
-        img(src="http://3d-xplormath.org/ExampleImages/Breather.png")
-        label.number= index + 1
+        a(href= '/discover/' + obj._id)
+          if obj.img
+            img(src= obj.img)
+          else
+            span.no-image
+          label.meta= obj._id
         div.actions

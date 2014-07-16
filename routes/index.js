@@ -25,5 +25,6 @@ exports = module.exports = function (app) {
   app.get('/question', routes.views.questionnaires)
   app.get('/practice', routes.views.practice)
   app.get('/field-guide', routes.views['field-guide'])
+  app.get('/discover/:sculptureId', routes.views.sculpture)
   app.get('/discover', routes.views.discover)
 }

@@ -253,6 +253,42 @@ body.practice{
     height: 100%;
     vertical-align: middle;
   }
+  .note{
+    position:absolute;
+    bottom:5%;
+    width:100%;
+    font-style:italic;
+    opacity:0;
+    -webkit-transition:opacity 0.7s
+  }
+  .card:hover ~ .note{
+    opacity:0.6;
+  }
+  .card:hover{
+    opacity: 1;
+  }
+  .fullscreen{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: white;
+    text-align: center;
+
+    .close {
+      position:absolute;
+      top:20px;
+      left:20px;
+    }
+  }
+  .fullscreen:before{
+    content:"";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
 }
 .discover{
   .object{

@@ -1,6 +1,7 @@
 extends ../layouts/home
 
 block content
+  - cards = [ "TOUCH", "SMELL", "GAZE", "SPACE", "HOLD", "REVEAL", "FEELING", "PRIVATE"]
 
   .container
     h2 practice
@@ -9,8 +10,12 @@ block content
     section
       h3.box(data-toggle="collapse", data-target=".cards") Where to start?
       .cards.collapse
-        each card in [ "TOUCH", "SMELL", "GAZE", "SPACE", "HOLD", "REVEAL", "FEELING", "PRIVATE"]
+        each card in cards
           .card=card
+      .fullscreen
+        a.close X
+        .card
+        p.note Click for a new card
 
     section
       h3.box(data-toggle="collapse", data-target=".inspiration") Some visual inspiration
@@ -22,5 +27,4 @@ block content
       .tryme
 
 block js
-  script(src='/js/lib/three.min.js')
-  script(src='/js/home.js')
+  script(src='/js/practice.js')

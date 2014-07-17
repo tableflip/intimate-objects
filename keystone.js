@@ -57,4 +57,6 @@ keystone.set('nav', {
 	'users': 'users'
 });
 
+keystone.set('default region', 'uk');
+
 keystone.start();

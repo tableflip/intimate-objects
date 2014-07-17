@@ -24,20 +24,4 @@ module.exports = function(req, res) {
 //    view.render('field-guide')
 //  })
 
-  Sculpture.model.findOne()
-  .sort({'createdAt': '-1'})
-  .exec(function (err, sculpture) {
-    if (err) console.error(err)
-
-    if (sculpture == null) {
-      view.render('no-objects')
-    } else {
-      locals.obj = sculpture
-      view.render('field-guide')
-    }
-  
-  })
-
-  
-
 }

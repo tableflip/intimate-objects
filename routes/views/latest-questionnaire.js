@@ -12,8 +12,11 @@ module.exports = function (req, res) {
   .exec(function (err, questionnaire) {
     if (err) console.error(err)
 
-    locals.questionnaire = questionnaire
-  
-    view.render("questionnaire")
+    if (questionnaire == null) {
+      view.render("no-questions")
+    } else {
+      locals.questionnaire = questionnaire
+      view.render("questionnaire")
+    }
   })
 }

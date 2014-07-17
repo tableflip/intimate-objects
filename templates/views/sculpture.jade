@@ -8,7 +8,7 @@ block content
             img.img-responsive(src= obj.img)
           else
             .no-image
-          label.meta= obj._id
+          label.meta= obj.humanId || obj._id
 
       .col-sm-6
         h2= obj.name

@@ -10,7 +10,7 @@ var stats = [
   },
   {
     name: "Moments",
-    number: 1312,
+    number: 173,
     description: "Number of intimate moments"
   }
 ];

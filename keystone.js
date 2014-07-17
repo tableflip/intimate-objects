@@ -5,6 +5,7 @@ require('dotenv')().load();
 // Require keystone
 var keystone = require('keystone');
 var config = require("config")
+var autoIncrement = require('mongoose-auto-increment')
 
 var keystoneConfig = {
   
@@ -60,3 +61,4 @@ keystone.set('nav', {
 keystone.set('default region', 'uk');
 
 keystone.start();
+

@@ -63,10 +63,11 @@ exports.requireUser = function(req, res, next) {
 */
 exports.incrementPageViews = function (req, res, next) {
   Stats.model.findOne()
-  .where({'name': 'pageviews'})
-  .exec(function (err, pageviews) {
+  .where({'name': 'Moments'})
+  .exec(function (err, moments) {
     if (err) console.error(err)
-    pageviews.update({
+
+      moments.update({
       $inc: {
         number: 1
       }

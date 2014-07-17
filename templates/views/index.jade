@@ -12,10 +12,16 @@ block content
           a.pyramid(href="#upcoming-labs"): h2 About
 
     .container
-      #counter
+      .counter
         each digit in objectCount.toString()
           span.digit= digit
         span|  objects created
+
+    .container
+      .counter.invert
+        each digit in momentCount.toString()
+          span.digit= digit
+        span|  intimate moments
 
     .container
       #upcoming-labs

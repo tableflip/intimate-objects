@@ -23,24 +23,32 @@ module.exports = function(req, res) {
     },
     function (cb) {
       Stats.model.findOne()
-      .where({"name": "pageviews"})
-      .exec(function (err, pageviews) {
-        cb (err, pageviews.number)
+      .where({"name": "Moments"})
+      .exec(function (err, moments) {
+        var count = moments.number
+        // Add leading zeroes to make the count a 5-digit number
+        while (count.toString().length < 5) {
+          count = "0" + count
+        }
+        cb (err, count)
       })
-      // Sculpture.model.count()
-      // .exec(function (err, count) {
-      //   // Add leading zeroes to make the count a 5-digit number
-      //   while (count.toString().length < 5) {
-      //     count = "0" + count
-      //   }
-      //   cb(err, count)
-      // })  
+    },
+    function (cb) {
+      Sculpture.model.count()
+        .exec(function (err, count) {
+          // Add leading zeroes to make the count a 5-digit number
+          while (count.toString().length < 5) {
+            count = "0" + count
+          }
+          cb(err, count)
+        })
     }
   ]
 
   async.parallel(dbTasks, function (err, results) {
     locals.upcomingLabs = results[0]
-    locals.objectCount = results[1]
+    locals.momentCount = results[1]
+    locals.objectCount = results[2]
 
     view.render('index')
   })

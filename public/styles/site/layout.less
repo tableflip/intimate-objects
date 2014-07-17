@@ -125,7 +125,7 @@ canvas{
       }
     }
   }
-  #counter {
+  .counter {
     font-size: 26px;
     padding: 0;
     border: 1px solid black;
@@ -136,9 +136,18 @@ canvas{
       display: inline-block;
       text-align: center;
       border-right: 1px solid black;
+      width:3em;
+    }
+  }
+  .counter.invert{
+    background: black;
+    color:white;
+    .digit{
+      border-right: 1px solid white;
     }
   }
 }
+
 #upcoming-labs {
   ul {
     li {
@@ -423,7 +432,7 @@ body.sculpture{
     h3, .h3 {
       font-size: 16px;
     }
-    #counter {
+    .counter {
       font-size: 16px;
       span {
         padding: 5px;

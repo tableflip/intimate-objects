@@ -13,8 +13,8 @@ module.exports = function(req, res) {
 
   var dbTasks = [
     function (cb) {
-      IntimacyLab.model.find()
-      .sort({"date": "-1"})
+      IntimacyLab.model.find({"date": {"$gte": new Date()}})
+      .sort({"date": "1"})
       .limit(3)
       .exec(function (err, labs) {
         cb(err, labs)

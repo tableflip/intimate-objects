@@ -12,8 +12,8 @@ module.exports = function (req, res) {
   locals._ = _
 
   IntimacyLab.model
-    .find()
-    .sort({"date": "-1"})
+    .find({"date": {"$gte": new Date()}})
+    .sort({"date": "1"})
     .limit(3)
     .exec(function (err, labs) {
       if (err) return console.error(err)

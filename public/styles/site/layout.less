@@ -27,8 +27,9 @@ canvas{
   display: block;
   background: #333;
 }
-.mapbox{
+#mapbox{
   height:300px;
+  margin-bottom: 25px;
 }
 #header {
   .container {
@@ -298,24 +299,25 @@ body.practice{
   }
 }
 
+.meta{
+  margin-top: 6px;
+  font-weight: 200;
+  display: block;
+  color:#333;
+}
+.meta:after{
+  content:"";
+  display: block;
+  border:solid 1px #333;
+  border-bottom:none;
+  height:6px;
+  margin-top:8px;
+}
+
 .object {
-  .meta{
-    margin-top: 6px;
-    font-weight: 200;
-    display: block;
-    color:#333;
-  }
   .meta:before{
     content:"#";
     font-weight:400;
-  }
-  .meta:after{
-    content:"";
-    display: block;
-    border:solid 1px #333;
-    border-bottom:none;
-    height:6px;
-    margin-top:8px;
   }
 }
 
@@ -364,6 +366,16 @@ body.sculpture{
   .form-group {
     margin-top: 15px;
   }
+  .address{
+//    border-left: solid 1px black;
+    padding-left: 4px;
+  }
+//  .address address{
+//    display: inline-block;
+//  }
+//  .address address .line{
+//    text-align: left;
+//  }
 }
 
 #questionnaire {

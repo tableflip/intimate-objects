@@ -7,7 +7,7 @@ block content
         h3.name= lab.name
           small.date.pull-right= moment(lab.date).format("DD/MM/YY")
         p.description!= lab.description
-        h4="Register for this lab"
+        h4="Join this lab"
         form(method="POST", action="/labs/" + lab._id + "/register")
           div.form-group
             label(for="lab-reg-email")="Email address:"
@@ -15,9 +15,25 @@ block content
           button(type="submit" class="btn btn-primary")="Register"
       if lab.location
         .col-sm-6
-          iframe.map(src="https://www.google.com/maps/embed/v1/place?key="+config.googleApiKey+"&q='"+_.escape(lab.location.serialised).replace("&", "%26")+"'",
-          width="100%",
-          height="300px")
+          if lab.location.geo
+            #mapbox(data-location!= lab.location.geo, data-location-name= lab.location.name, data-street1= lab.location.street1)
+
+          .meta
+
+          .address
+            h4 Address
+            address
+              .line.name= lab.location.name
+              .line.street1= lab.location.street1
+              .line.street2= lab.location.street2
+              .line.city= lab.location.suburb
+              .line.postcode= lab.location.postcode
+
+          //iframe.map(src="https://www.google.com/maps/embed/v1/place?key="+config.googleApiKey+"&q='"+_.escape(lab.location.serialised).replace("&", "%26")+"'",
+          //width="100%",
+          //height="300px")
 
 block js
+  link(rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+  script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
   script(src='/js/lab.js')

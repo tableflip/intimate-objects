@@ -33,7 +33,7 @@ module.exports = function (req, res) {
       console.log('Successfully sent attendance email to admin', config.labEmail)
     })
 
-    var attendeeEmail = new keystone.Email('lab-attendee')
+    var attendeeEmail = new keystone.Email('lab-participant-information')
 
     attendeeEmail.send({
       from: config.labEmail,

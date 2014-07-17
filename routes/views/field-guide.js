@@ -1,6 +1,7 @@
 var keystone = require('keystone')
-var async = require("async")
-var moment = require("moment")
+var async = require('async')
+var moment = require('moment')
+var Sculpture = keystone.list('Sculpture')
 
 module.exports = function(req, res) {
 
@@ -9,12 +10,12 @@ module.exports = function(req, res) {
   locals.moment = moment
   locals.bodyClass = ['field-guide']
 
-  var dbTasks = [
-    function (cb) {
-    },
-    function (cb) {
-    }
-  ]
+  // var dbTasks = [
+  //   function (cb) {
+  //   },
+  //   function (cb) {
+  //   }
+  // ]
 
 //  async.parallel(dbTasks, function (err, results) {
 //    locals.upcomingLabs = results[0]
@@ -23,6 +24,20 @@ module.exports = function(req, res) {
 //    view.render('field-guide')
 //  })
 
-  view.render('field-guide')
+  Sculpture.model.findOne()
+  .sort({'createdAt': '-1'})
+  .exec(function (err, sculpture) {
+    if (err) console.error(err)
+
+    if (sculpture == null) {
+      view.render('no-objects')
+    } else {
+      locals.obj = sculpture
+      view.render('field-guide')
+    }
+  
+  })
+
+  
 
 }

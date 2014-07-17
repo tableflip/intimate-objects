@@ -7,7 +7,7 @@ block content
       div.object
         a(href= '/discover/' + obj._id)
           if obj.img
-            img(src= obj.img)
+            img.img-responsive(src= obj.img)
           else
             span.no-image
           label.meta= obj._id

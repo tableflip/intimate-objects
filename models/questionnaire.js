@@ -5,6 +5,7 @@ var Types = keystone.Field.Types
 var Questionnaire = new keystone.List('Questionnaire')
 
 Questionnaire.add({
+  createdAt: { type: Date, default: Date.now },
   name: { type: String, required: true, initial: true },
   embedCode: { type: Types.Html, initial: true }
 })

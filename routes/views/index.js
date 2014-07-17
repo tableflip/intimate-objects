@@ -2,6 +2,7 @@ var keystone = require('keystone')
 var async = require("async")
 var IntimacyLab = keystone.list("IntimacyLab")
 var Sculpture = keystone.list("Sculpture")
+var Stats = keystone.list("Stats")
 var moment = require("moment")
 
 module.exports = function(req, res) {
@@ -21,14 +22,19 @@ module.exports = function(req, res) {
       })  
     },
     function (cb) {
-      Sculpture.model.count()
-      .exec(function (err, count) {
-        // Add leading zeroes to make the count a 5-digit number
-        while (count.toString().length < 5) {
-          count = "0" + count
-        }
-        cb(err, count)
-      })  
+      Stats.model.findOne()
+      .where({"name": "pageviews"})
+      .exec(function (err, pageviews) {
+        cb (err, pageviews.number)
+      })
+      // Sculpture.model.count()
+      // .exec(function (err, count) {
+      //   // Add leading zeroes to make the count a 5-digit number
+      //   while (count.toString().length < 5) {
+      //     count = "0" + count
+      //   }
+      //   cb(err, count)
+      // })  
     }
   ]
 

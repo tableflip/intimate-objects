@@ -1,5 +1,4 @@
 var keystone = require('keystone')
-var _ = require('underscore')
 var config = require("config")
 var Questionnaire = keystone.list("Questionnaire")
 
@@ -7,13 +6,17 @@ module.exports = function (req, res) {
   
   var locals = res.locals
   var view = new keystone.View(req, res)
-  locals.moment = require("moment")
-  locals.config = config
 
-  Questionnaire.model.find().exec(function (err, questionnaires) {
+  Questionnaire.model.findOne()
+  .sort({"createdAt": "-1"})
+  .exec(function (err, questionnaire) {
     if (err) console.error(err)
 
-    locals.questionnaires = questionnaires
-    view.render("questionnaires")
+    if (questionnaire == null) {
+      view.render("no-questions")
+    } else {
+      locals.questionnaire = questionnaire
+      view.render("questionnaire")
+    }
   })
 }

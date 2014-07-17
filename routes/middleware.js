@@ -1,6 +1,7 @@
 var _ = require('underscore'),
 	querystring = require('querystring'),
-	keystone = require('keystone');
+	keystone = require('keystone'),
+  Stats = keystone.list('Stats')
 
 
 /**
@@ -55,4 +56,22 @@ exports.requireUser = function(req, res, next) {
 		next();
 	}
 	
+}
+
+/*
+* Increments a counter on the pageviews document in the Stats collection
+*/
+exports.incrementPageViews = function (req, res, next) {
+  Stats.model.findOne()
+  .where({'name': 'pageviews'})
+  .exec(function (err, pageviews) {
+    if (err) console.error(err)
+    pageviews.update({
+      $inc: {
+        number: 1
+      }
+    }, function () {
+      next()
+    })
+  })
 }

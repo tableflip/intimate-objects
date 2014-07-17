@@ -6,6 +6,7 @@ var _ = require('underscore'),
 // Common Middleware
 keystone.pre('routes', middleware.initLocals)
 keystone.pre('render', middleware.flashMessages)
+keystone.pre('render', middleware.incrementPageViews)
 
 // Import Route Controllers
 var routes = {
@@ -22,7 +23,7 @@ exports = module.exports = function (app) {
   app.get('/labs', routes.views.labs)
   app.post('/labs/:labId/register', routes.views['lab-register'])
   app.get('/question/:questionnaireId', routes.views.questionnaire)
-  app.get('/question', routes.views.questionnaires)
+  app.get('/question', routes.views['latest-questionnaire'])
   app.get('/practice', routes.views.practice)
   app.get('/field-guide', routes.views['field-guide'])
   app.get('/discover/:sculptureId', routes.views.sculpture)

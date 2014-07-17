@@ -30,8 +30,9 @@ exports = module.exports = function (app) {
     Sculpture.model.findOne()
     .sort({'createdAt': '-1'})
     .exec(function (err, sculpture) {
-      req.params.sculptureId = sculpture._id
-      routes.views.sculpture(req, res)
+      res.redirect('/discover/' + sculpture._id)
+      //req.params.sculptureId = sculpture._id
+      //routes.views.sculpture(req, res)
     })
   })
   app.get('/discover/:sculptureId', routes.views.sculpture)

@@ -9,7 +9,15 @@ function shape (selector, makeShape) {
 	camera.position.z = 40
 	camera.lookAt(scene.position);
 
-	var renderer = new THREE.WebGLRenderer();
+	var renderer = new THREE.CanvasRenderer()
+
+//  if (window.WebGLRenderingContext) {
+//    renderer = new THREE.WebGLRenderer()
+//  }
+//  else{
+//    renderer = new THREE.CanvasRenderer()
+//  }
+
 	renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
 	renderer.setSize(w, h);
 	renderer.shadowMapEnabled = true;

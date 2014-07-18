@@ -15,13 +15,12 @@ block content
       .counter
         each digit in objectCount.toString()
           span.digit= digit
-        span|  objects created
+        span.label|  objects created
 
-    .container
       .counter.invert
         each digit in momentCount.toString()
           span.digit= digit
-        span|  intimate moments
+        span.label|  intimate moments
 
     .container
       #upcoming-labs
@@ -38,42 +37,42 @@ block content
     .container
       #explore
         h2 Explore
-        a.square.polka(href="/discover")
+        a.square.crossed(href="/labs")
           .content
-            span Discover
-        a.square.dashed-right(href="/field-guide")
-          .content
-            span Field Guide
+            span Labs
         a.square.hatched(href="/practice")
           .content
             span Practice
         a.square.dashed-left(href="/question")
           .content
             span Question
-        a.square.crossed(href="/labs")
+        span.square.polka(href="/discover")
           .content
-            span Labs
+            span Discover
+        span.square.dashed-right(href="/field-guide")
+          .content
+            span Field Guide
 
     .container
       #about
         h2 About
 
-        p Intimate Objects cares about developing a world of deepening intimacy - part sex, part sexual intimacy, and part intimacy that exists beyond or outsside either of those things. It’s all about each person interpreting what that means for themselves, and where they’d like to, sharing that with others.
+        p We know that the idea of ‘intimate objects’ will mean something very different to everyone that arrives here.  It might bring to mind sex, sexual intimacy, or intimacy that exists beyond or outside either of those things. We’ve created this space for each person to interpret and explore what that means for them and where they’d like to, sharing that with others.
 
         p
           a.show-more(data-toggle="collapse", data-target="#about .more") Read more...
 
         .more.collapse
-          p The questions that brought us here were these - Where are the conversations about sex that value it as a space for life-long learning, or that allow us to acknowledge the fluidity of our sexual identities throughout our lives, and potential of this? Where are the conversations that link our sexual expression to wellbeing - the emotional and physiological wellbeing that has a different quality and necessity to it than ‘sexual health’? And where is the space that lets us really imagine and craft our own sexual expression away from the glare of what we are told we should be like or should prefer?
+          p The questions that brought us here were these - Where are the conversations about sex that value it as a space for life-long learning, or that allow us to acknowledge the fluidity of our sexual identities throughout our lives, and potential of this? Where are the conversations that link our sexual expression to wellbeing - the emotional and physiological wellbeing that has a different quality and necessity to it than ‘sexual health’? And where is the space that lets us really imagine and craft our own sexual exprience's away from the glare of what we are told we should be like or should prefer?
           p It was all very focussed on sex and sexual intimacy.
-          p Then as the idea developed and as we also developed the Intimacy Labs, we realised that what people were designing wasn’t always so easily categorised as being about sex. People were designing objects and having ideas about how to just connect with one another. These objects were about building and deepening intimacy.
-          p So we still really care about sex, and about breaking through all the taboo because we stand for a world that is open, accepting and full of love. But we don’t want to ignore those moments of intimacy, that can exist across our lives, and not just in relation to sex.
+          p Then as the idea developed and as we also developed the Intimacy Labs, we realised that what people were designing wasn’t always so easily categorised as being about sex. People were also designing objects and having ideas about how to just connect with one another. These objects were about building and deepening intimacy.
+          p We really care about sex, and about breaking through all the taboo because we stand for a world that is open and accepting . But we don’t want to ignore those moments of intimacy, that can exist across our lives, and not just in relation to sex.
           p Explore, play, tinker, question, listen, be aware and come with curiosity. You can also take part in our research.
 
     .container
       #contact
         h2 Contact
-        p For more information please contact <a mailto:"cassie@cassierobinson.net">cassie@cassierobinson.net</a>
+        p For more information please contact us <a mailto:"cassie@intimateobjects.io">here</a>
 
 block js
   script(src='/js/lib/three.min.js')

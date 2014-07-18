@@ -36,7 +36,6 @@ $(document).on('keydown', function (evt) {
   }
 })
 
-
 $(document).on('click', '.cards .card', function(evt){
   var text = $(evt.target).text()
   $('.fullscreen .card').text(text)
@@ -45,4 +44,21 @@ $(document).on('click', '.cards .card', function(evt){
 
 $('.close').on('click', function(){
   $('.fullscreen').hide()
+})
+
+
+$(document).on('click', '#Star-1', function(evt){
+  alert('STAR')
+})
+
+$(document).on('click', '#Polygon-1', function(evt){
+  alert('POLYGON')
+})
+
+$(document).on('click', '#Rectangle-1', function(evt){
+  alert('SQUARE')
+})
+
+$(document).on('click', '#Triangle-1', function(evt){
+  alert('TRIANGLE')
 })

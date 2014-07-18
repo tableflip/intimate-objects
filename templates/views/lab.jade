@@ -1,4 +1,4 @@
-extends ../layouts/small-header
+extends ../layouts/home
 
 block content
   #lab
@@ -9,10 +9,9 @@ block content
         p.description!= lab.description
         h4="Join this lab"
         form(method="POST", action="/labs/" + lab._id + "/register")
-          div.form-group
-            label(for="lab-reg-email")="Email address:"
+          div.form-group.io-input
             input(id="lab-reg-email", type="email", class="form-control", placeholder="you@example.org", required)
-          button(type="submit" class="btn btn-primary")="Register"
+          button(type="submit" class="btn btn-primary")="Join"
       if lab.location
         .col-sm-6
           if lab.location.geo

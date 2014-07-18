@@ -17,11 +17,14 @@ h2, .h2{
 h3, .h3{
   font-size: 16px;
 }
+a:hover{
+  text-decoration: none;
+}
+a:hover * {
+  color: @link-hover-color;
+}
 p {
   margin-bottom: 24px;
-}
-a {
-  color: @gray;
 }
 canvas{
   background:white;
@@ -55,10 +58,10 @@ canvas{
   }
   .io-logo {
     display: block;
-    width: 166px;
+    width: 168px;
     height: 120px;
-    margin: 20px auto;
-    background: url(../images/io-logo.2.png) no-repeat;
+    margin: 40px auto 20px;
+    background: url(../images/logo-2.png) no-repeat;
     background-size: auto 100%;
   }
   .strapline {
@@ -75,9 +78,6 @@ canvas{
     background: -webkit-linear-gradient(left, #333, #eee);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  a:hover{
-    text-decoration: none;
   }
 }
 #header.small-header {
@@ -189,9 +189,6 @@ canvas{
       font-weight: 300;
       line-height: 2em;
       border-bottom: 1px dashed #333;
-      a, a :hover {
-        color: #333;
-      }
     }
   }
   .date{
@@ -229,7 +226,6 @@ canvas{
         margin:0 auto;
         padding: 5px;
         background: white;
-        color: #333;
         font-weight: 300;
         letter-spacing: 3px;
         text-transform: uppercase;
@@ -246,7 +242,7 @@ canvas{
     padding-top: 100%; 	/* ratio of 1:1*/
   }
   .square[href="/discover"], .square[href="/field-guide"]{
-    opacity: 0.1;
+    opacity: 0.4;
   }
   .polka {
     background: url(/images/gif/dots.gif) no-repeat;
@@ -261,11 +257,13 @@ canvas{
     background-size: 100% auto;
   }
   .hatched {
-    background: url(../images/gif/square.gif) no-repeat;
+//    background: url(../images/gif/square.gif) no-repeat;
+    background: url(../images/gif/disable/square.png) no-repeat;
     background-size: 100% auto;
   }
   .crossed {
-    background: url(../images/gif/ex5.gif) no-repeat;
+//    background: url(../images/gif/ex5.gif) no-repeat;
+    background: url(../images/gif/disable/ex.png) no-repeat;
     background-size: 100% auto;
   }
 }

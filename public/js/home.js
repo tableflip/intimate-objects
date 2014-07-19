@@ -1,3 +1,5 @@
+var canHasWebGL = ( function () { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } } )()
+
 function shape (selector, makeShape) {
 	var $selector = $(selector)
 	var w = $selector.width()
@@ -9,14 +11,7 @@ function shape (selector, makeShape) {
 	camera.position.z = 40
 	camera.lookAt(scene.position);
 
-	var renderer = new THREE.CanvasRenderer()
-
-//  if (window.WebGLRenderingContext) {
-//    renderer = new THREE.WebGLRenderer()
-//  }
-//  else{
-//    renderer = new THREE.CanvasRenderer()
-//  }
+  var renderer = canHasWebGL ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer()
 
 	renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
 	renderer.setSize(w, h);
@@ -120,6 +115,7 @@ function makeSphere () {
   return obj
 }
 
+function canHasWebGl() { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } }
 
 /*if (window.innerWidth < 600) return;*/
 shape(".cube", makeCube)

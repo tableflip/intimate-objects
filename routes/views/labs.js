@@ -23,7 +23,7 @@ module.exports = function (req, res) {
     },
     function (cb) {
       Texts.model
-        .findOne({name: "Lab" })
+        .findOne({name: "Labs list" })
         .exec(cb)
     }
   ]

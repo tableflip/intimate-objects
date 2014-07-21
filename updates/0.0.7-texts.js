@@ -10,7 +10,13 @@ var items = [
     }
   },
   {
-    name: "Lab",
+    name: "Lab intro",
+    content:{
+      md:"The Intimacy Lab is a space for you to come and explore, question and make. There are materials for you to design with, write with, draw with, talk with, record with and make with. There are private spaces and social spaces. You can book a time to go in to the design area (with alone, with friends or with a partner(s), or you can just hang out and find out more about what we are doing, and even sign up for a home kit."
+    }
+  },
+  {
+    name: "Labs list",
     content:{
       md:"The Intimacy Lab is a space for you to come and explore, question and make. There are materials for you to design with, write with, draw with, talk with, record with and make with. There are private spaces and social spaces. You can book a time to go in to the design area (with alone, with friends or with a partner(s), or you can just hang out and find out more about what we are doing, and even sign up for a home kit."
     }

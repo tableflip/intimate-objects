@@ -45,7 +45,7 @@ module.exports = function(req, res) {
         })
     },
     function (cb) {
-      Texts.model.find({name: { $in: ["About", "Lab"] }})
+      Texts.model.find({name: { $in: ["About", "Lab intro"] }})
         .exec(function (err, items) {
           if (items[0].name !== 'About') items.reverse()
           cb(err, items)

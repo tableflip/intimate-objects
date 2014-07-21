@@ -25,6 +25,9 @@ block content
     .container
       #upcoming-labs
         h2 Upcoming Intimacy Labs
+
+        != texts.labs.content.html
+
         ul.list-unstyled
           each lab in upcomingLabs
             li

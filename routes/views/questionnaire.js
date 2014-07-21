@@ -1,6 +1,8 @@
 var keystone = require('keystone')
 var config = require("config")
 var Questionnaire = keystone.list("Questionnaire")
+var Texts = keystone.list("Texts")
+var async = require("async")
 
 module.exports = function (req, res) {
   
@@ -9,11 +11,24 @@ module.exports = function (req, res) {
 
   var questionnaireId = req.params.questionnaireId
 
-  Questionnaire.model.findOne({ _id: questionnaireId }).exec(function (err, questionnaire) {
-    if (err) console.error(err)
+  var dbTasks = [
+    function (cb) {
+      Questionnaire.model
+        .findOne({ _id: questionnaireId })
+        .exec(cb)
+    },
+    function (cb) {
+      Texts.model
+        .findOne({name: "Question" })
+        .exec(cb)
+    }
+  ]
 
-    locals.questionnaire = questionnaire
-  
+  async.parallel(dbTasks, function (err, results) {
+    console.log('questions', results)
+    locals.questionnaire = results[0]
+    locals.texts = {}
+    locals.texts.question = results[1]
     view.render("questionnaire")
   })
 }

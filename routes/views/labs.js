@@ -2,6 +2,8 @@ var keystone = require('keystone')
 var _ = require('underscore')
 var config = require("config")
 var IntimacyLab = keystone.list("IntimacyLab")
+var Texts = keystone.list("Texts")
+var async = require("async")
 
 module.exports = function (req, res) {
 
@@ -11,13 +13,26 @@ module.exports = function (req, res) {
   locals.config = config
   locals._ = _
 
-  IntimacyLab.model
-    .find({"date": {"$gte": new Date()}})
-    .sort({"date": "1"})
-    .limit(3)
-    .exec(function (err, labs) {
-      if (err) return console.error(err)
-      locals.labs = labs
-      view.render("labs")
-    })
+  var dbTasks = [
+    function (cb) {
+      IntimacyLab.model
+        .find({"date": {"$gte": new Date()}})
+        .sort({"date": "1"})
+        .limit(3)
+        .exec(cb)
+    },
+    function (cb) {
+      Texts.model
+        .findOne({name: "Lab" })
+        .exec(cb)
+    }
+  ]
+
+  async.parallel(dbTasks, function (err, results) {
+    locals.labs = results[0]
+    locals.texts = {}
+    locals.texts.labs = results[1]
+
+    view.render('labs')
+  })
 }

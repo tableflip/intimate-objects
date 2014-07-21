@@ -3,13 +3,7 @@ extends ../layouts/small-header
 block intro
   .container
     .preamble
-      p Intimate Objects is currently a prototype and is being part-funded as a research project by the REACT Hub in Bristol -
-        a(href="http://www.react-hub.org.uk/intimate-objects/") http://www.react-hub.org.uk/intimate-objects/
-
-      p We really value that the work is being informed and shaped by anthropological research because anthropology does not impose models but develops understanding from the ground up - real people, and their ideas, practices and desires.
-
-      p The research is being lead by Mwneza Blell and Sarah Winkler Reid.
-
+      != texts.question.content.html
 
 block content
   #questionnaire!= questionnaire.embedCode

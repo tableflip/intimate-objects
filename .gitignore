@@ -19,3 +19,5 @@ runtime.json
 
 *.min.css
 .idea
+
+public/images/inspiration

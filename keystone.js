@@ -1,11 +1,10 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv')().load();
+require('dotenv')().load()
 
 // Require keystone
-var keystone = require('keystone');
+var keystone = require('keystone')
 var config = require("config")
-var autoIncrement = require('mongoose-auto-increment')
 
 var keystoneConfig = {
   
@@ -40,25 +39,25 @@ if (config.mandrillApiKey) {
   console.warn("Missing SMTP server config!")
 }
 
-keystone.init(keystoneConfig);
+keystone.init(keystoneConfig)
 
-
-keystone.import('models');
+keystone.import('models')
 
 keystone.set('locals', {
-	_: require('underscore'),
-	env: keystone.get('env'),
-	utils: keystone.utils,
-	editable: keystone.content.editable
-});
+  _: require('underscore'),
+  env: keystone.get('env'),
+  utils: keystone.utils,
+  editable: keystone.content.editable
+})
 
-keystone.set('routes', require('./routes'));
+keystone.set('routes', require('./routes'))
 
 keystone.set('nav', {
-	'users': 'users'
-});
+  users: 'users',
+  Practice: ['Card', 'InspirationImage']
+})
 
-keystone.set('default region', 'uk');
+keystone.set('default region', 'uk')
 
-keystone.start();
+keystone.start()
 

@@ -1,8 +1,6 @@
 extends ../layouts/home
 
 block content
-  - cards = [ "TOUCH", "SMELL", "GAZE", "SPACE", "HOLD", "REVEAL", "FEELING", "PRIVATE"]
-
   .container
     h2 practice
     p
@@ -13,7 +11,7 @@ block content
         each card in cards
           .card
             .front.side
-            .back.side=card
+            .back.side=card.text
       .fullscreen
         a.close X
         .card
@@ -22,7 +20,23 @@ block content
     section
       h3.box(data-toggle="collapse", data-target=".inspiration") Some visual inspiration
       .inspiration.collapse
-        img(src="http://33.media.tumblr.com/334e20a0491b7176c825f6cb5b3ad137/tumblr_mua03qrVxZ1suhdw4o1_500.gif")
+        #carousel.carousel.slide(data-ride='carousel')
+          // Indicators 
+          ol.carousel-indicators
+            each image, i in images
+              li(class=i == 0 ? "active" : "", data-target='#carousel', data-slide-to=i)
+          // Wrapper for slides 
+          .carousel-inner
+            each image, i in images
+              .item(class=i == 0 ? "active" : "")
+                img(src="/images/inspiration/" + image.src.filename)
+                .carousel-caption=image.caption
+          // Controls 
+          a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
+            span.glyphicon.glyphicon-chevron-left
+          a.right.carousel-control(href='#carousel', role='button', data-slide='next')
+            span.glyphicon.glyphicon-chevron-right
+
 
     section
       h3.box(data-toggle="collapse", data-target=".tryme") Something to try

@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "~0.2.6",
     "async": "~0.2.9",
-    "underscore": "~1.5.2",
-    "dotenv": "0.0.3",
-    "moment": "~2.7.0",
     "config": "~0.4.36",
+    "dotenv": "0.0.3",
     "hat": "0.0.3",
-    "shortid": "^2.0.1",
-    "pad": "0.0.5",
+    "keystone": "~0.2.6",
+    "mkdirp": "^0.5.0",
+    "moment": "~2.7.0",
     "mongoose": "^3.8.13",
-    "mongoose-auto-increment": "^3.0.8"
+    "mongoose-auto-increment": "^3.0.8",
+    "pad": "0.0.5",
+    "shortid": "^2.0.1",
+    "underscore": "~1.5.2"
   },
   "engines": {
     "node": ">=0.10.22",

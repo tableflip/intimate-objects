@@ -1,5 +1,5 @@
 //var cards = [ "TOUCH", "SMELL", "GAZE", "SPACE", "HOLD", "REVEAL", "FEELING", "PRIVATE" ]
-
+/*
 var cards = $('.cards .card').map(function(i, el){ return el.innerHTML })
 
 var lastPicks = []
@@ -44,6 +44,11 @@ $(document).on('click', '.cards .card', function(evt){
 
 $('.close').on('click', function(){
   $('.fullscreen').hide()
+})
+*/
+
+$('.card').on('click', function () {
+  $(this).toggleClass('over')
 })
 
 

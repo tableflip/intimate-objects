@@ -270,17 +270,75 @@ canvas{
 
 body.practice{
   h3 {
-  border:solid 1px #333;
-  padding: 10px 14px;
-  margin:20px 0;
-  font-weight: 200;
+    border:solid 1px #333;
+    padding: 10px 14px;
+    margin:20px 0;
+    font-weight: 200;
+    cursor: pointer;
   }
   .inspiration{
     background: #333;
     text-align: center;
     margin-bottom: 20px;
   }
-  .cards .card {
+  .cards {
+    margin-right: -30px;
+  }
+  .card {
+    display: inline-block;
+    width: 220px;
+    height: 311px;
+    position: relative;
+    margin: 0 28px 26px 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-perspective: 500px;
+    perspective: 500px;
+    cursor: pointer;
+  }
+  .side {
+    background: #fff;
+    position: absolute;
+    border: 1px solid #333;
+    width:218px;
+    height:309px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    top:0;
+    left:0;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .side.front {
+    background: #fff url(../images/bg-card.png)
+  }
+  .card:nth-child(odd) .side.front {
+    background: #fff url(../images/bg-card-alt.png)
+  }
+  .card:nth-child(n+5):nth-child(-n+8):nth-child(even) .side.front {
+    background: #fff url(../images/bg-card-alt.png)
+  }
+  .card:nth-child(n+5):nth-child(-n+8):nth-child(odd) .side.front {
+    background: #fff url(../images/bg-card.png)
+  }
+  .side.back {
+    line-height: 309px;
+    text-align: center;
+    font-size:20px;
+    font-weight:200;
+    -webkit-transform:rotatey(180deg);
+    transform:rotatey(180deg);
+  }
+  .card.over .side.front {
+    -webkit-transform:rotatey(-180deg);
+    transform:rotatey(-180deg);
+  }
+  .card.over .side.back {
+    -webkit-transform:rotatey(0);
+    transform:rotatey(0);
+  }
+  /*.cards .card {
     border:solid 1px #333;
     width: 220px;
     height:210px;
@@ -316,7 +374,7 @@ body.practice{
   }
   .card:hover{
     opacity: 1;
-  }
+  }*/
   .fullscreen{
     display:none;
     position:fixed;

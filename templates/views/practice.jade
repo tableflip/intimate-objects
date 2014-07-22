@@ -11,7 +11,9 @@ block content
       h3.box(data-toggle="collapse", data-target=".cards") Where to start?
       .cards.collapse
         each card in cards
-          .card=card
+          .card
+            .front.side
+            .back.side=card
       .fullscreen
         a.close X
         .card

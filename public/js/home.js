@@ -11,7 +11,7 @@ function shape (selector, makeShape) {
 	camera.position.z = 40
 	camera.lookAt(scene.position);
 
-  var renderer = canHasWebGL ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer()
+  var renderer = canHasWebGL ? new THREE.WebGLRenderer({antialias: true}) : new THREE.CanvasRenderer()
 
 	renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
 	renderer.setSize(w, h);

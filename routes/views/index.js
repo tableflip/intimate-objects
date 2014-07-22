@@ -17,7 +17,6 @@ module.exports = function(req, res) {
     function (cb) {
       IntimacyLab.model.find({"date": {"$gte": new Date()}})
         .sort({"date": "1"})
-        .limit(3)
         .exec(function (err, labs) {
           cb(err, labs)
         })

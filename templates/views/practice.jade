@@ -40,8 +40,16 @@ block content
 
     section
       h3.box(data-toggle="collapse", data-target=".tryme") Something to try
-      .tryme.collapse
+      .tryme
+        .shapes
+          .col-xs-4
+            a.octahedron(href="#")
+          .col-xs-4
+            a.cylinder(href="#")
+          .col-xs-4
+            a.torus(href="#")
 
 
 block js
+  script(src='/js/lib/three.min.js')
   script(src='/js/practice.js')

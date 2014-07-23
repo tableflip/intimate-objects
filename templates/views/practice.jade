@@ -12,10 +12,6 @@ block content
           .card
             .front.side
             .back.side=card.text
-      .fullscreen
-        a.close X
-        .card
-        p.note Click for a new card
 
     section
       h3.box(data-toggle="collapse", data-target=".inspiration") Some visual inspiration
@@ -43,11 +39,23 @@ block content
       .tryme.collapse.in
         .shapes
           .col-xs-4
-            a.octahedron(href="#")
+            a.octahedron(href="#octahedron")
           .col-xs-4
-            a.cylinder(href="#")
+            a.cylinder(href="#cylinder")
           .col-xs-4
-            a.torus(href="#")
+            a.torus(href="#torus")
+      #octahedron.fullscreen
+        a.close X
+        .content
+          img.img-responsive(src="/images/bg-micro-experience-1.png")
+      #cylinder.fullscreen
+        a.close X
+        .content
+          img.img-responsive(src="/images/bg-micro-experience-3.png")
+      #torus.fullscreen
+        a.close X
+        .content
+          img.img-responsive(src="/images/bg-micro-experience-2.png")
 
 
 block js

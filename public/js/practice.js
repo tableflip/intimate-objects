@@ -69,7 +69,15 @@ $(document).on('click', '#Triangle-1', function(evt){
 })
 
 
-var canHasWebGL = ( function () { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } } )()
+var canHasWebGL = (function () {
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) return false
+  try {
+    var canvas = document.createElement('canvas')
+    return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+  } catch( e ) {
+    return false
+  }
+})()
 
 function shape (selector, makeShape) {
   var $selector = $(selector)
@@ -177,4 +185,6 @@ function makeOctahedron () {
 shape(".octahedron", makeOctahedron)
 shape(".torus", makeTorus)
 shape(".cylinder", makeCylinder)
+
+$(".tryme.collapse").collapse()
 

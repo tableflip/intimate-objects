@@ -1,4 +1,12 @@
-var canHasWebGL = ( function () { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } } )()
+var canHasWebGL = (function () {
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) return false
+  try {
+    var canvas = document.createElement('canvas')
+    return !! window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+  } catch( e ) {
+    return false
+  }
+})()
 
 function shape (selector, makeShape) {
 	var $selector = $(selector)
@@ -114,8 +122,6 @@ function makeSphere () {
   obj.receiveShadow = false;
   return obj
 }
-
-function canHasWebGl() { try { var canvas = document.createElement( 'canvas' ); return !! window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ); } catch( e ) { return false; } }
 
 /*if (window.innerWidth < 600) return;*/
 shape(".cube", makeCube)

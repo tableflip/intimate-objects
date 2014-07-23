@@ -5,10 +5,10 @@ block content
 
     each obj, index in objects
       div.object
-        a(href= '/discover/' + obj._id)
-          if obj.img
-            img.img-responsive(src= obj.img)
+        a(href= '/discover/' + pad(4, obj.humanId+'', '0'))
+          if obj.img.filename
+            img.img-responsive(src="/images/sculptures/"+obj.img.filename)
           else
             span.no-image
-          label.meta= obj.humanId || obj._id
+          label.meta=pad(4, obj.humanId+'', '0')
         div.actions

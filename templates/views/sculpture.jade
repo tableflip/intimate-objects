@@ -3,19 +3,67 @@ block content
   .container
     .row
       .col-sm-6
-        .object
-          if obj.img
-            img.img-responsive(src= obj.img)
+        div.item.text
+          h1.label
+            | Name of object
+          div.value=sculpture.name
+        .object.item
+          h2.label
+            | Image
+          if sculpture.img.filename
+            img.img-responsive(src="/images/sculptures/"+sculpture.img.filename)
           else
             .no-image
-          label.meta= obj.humanId || obj._id
+          label.meta=pad(4, sculpture.humanId+'', '0')
 
       .col-sm-6
-        h2= obj.name
-        if obj.creator
-          h3.creator= obj.creator
-
-        p= obj.description
+        div.item.text
+          h2.label
+            | ID Number
+          div.value=pad(4, sculpture.humanId+'', '0')
+        if sculpture.tags
+          div.item.text
+            h2.label
+              | Tags
+            div.value=sculpture.tags
+        if sculpture.parts
+          div.item.text
+            h2.label
+              | Parts
+            div.value=sculpture.parts
+        if sculpture.tips
+          div.item.list
+            h2.label
+              | Creators tips for use
+            ul.value
+              each tip in sculpture.tips.split('\n')
+                li=tip
+    .row
+      .col-xs-12
+        if sculpture.description
+          div.item.textarea
+            h2.label
+              | Description
+            div.value=sculpture.description
+        if sculpture.inspiration
+          div.item.textarea
+            h2.label
+              | Inspiration
+            div.value=sculpture.inspiration
+        if sculpture.narrative
+          div.item.textarea
+            h2.label
+              | Narrative
+            div.value=sculpture.narrative
+    .pagination
+      if prev
+        a.prev(href="/discover/"+pad(4, prev.humanId+'', '0')) &larr; Previous
+      else
+        span.prev &larr; Previous
+      if next
+        a.next(href="/discover/"+pad(4, next.humanId+'', '0')) Next &rarr;
+      else
+        span.next Next &rarr;
 
 block footer
   a.back(href="/discover") &larr; Go back

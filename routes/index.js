@@ -1,8 +1,9 @@
 var _ = require('underscore'),
-  keystone = require('keystone'),
-  middleware = require('./middleware'),
-  importRoutes = keystone.importer(__dirname),
-  Sculpture = keystone.list('Sculpture')
+    pad = require('pad'),
+    keystone = require('keystone'),
+    middleware = require('./middleware'),
+    importRoutes = keystone.importer(__dirname),
+    Sculpture = keystone.list('Sculpture')
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals)
@@ -30,11 +31,11 @@ exports = module.exports = function (app) {
     Sculpture.model.findOne()
     .sort({'createdAt': '-1'})
     .exec(function (err, sculpture) {
-      res.redirect('/discover/' + sculpture._id)
-      //req.params.sculptureId = sculpture._id
-      //routes.views.sculpture(req, res)
+      if (err) return res.status(500).render('errors/500')
+      if (!sculpture) return res.status(404).render('errors/404')
+      res.redirect('/discover/' + pad(5 - (sculpture.humanId+'').length, sculpture.humanId+'', '0'))
     })
   })
-  app.get('/discover/:sculptureId', routes.views.sculpture)
+  app.get('/discover/:humanId', routes.views.sculpture)
   app.get('/discover', routes.views.discover)
 }

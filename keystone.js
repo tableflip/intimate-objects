@@ -1,10 +1,9 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv')().load()
+require('dotenv').load()
 
-// Require keystone
 var keystone = require('keystone')
-var config = require("config")
+var config = require('config')
 
 var keystoneConfig = {
   
@@ -63,4 +62,3 @@ keystone.set('nav', {
 keystone.set('default region', 'uk')
 
 keystone.start()
-

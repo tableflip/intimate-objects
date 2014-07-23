@@ -11,6 +11,9 @@ var keystoneConfig = {
   'name': 'intimate objects',
   'brand': 'intimate objects',
   
+  'host': config.host,
+  'port': config.port,
+  
   'less': 'public',
   'static': 'public',
   'favicon': 'public/favicon.ico',

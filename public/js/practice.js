@@ -12,15 +12,15 @@ var canHasWebGL = (function () {
   }
 })()
 
-function shape (selector, makeShape) {
+function makeScene (selector, shapes) {
   var $selector = $(selector)
   var w = $selector.width()
-  var h = 300
+  var h = 500
   var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(80,w/h, 0.1, 200);
+  var camera = new THREE.PerspectiveCamera(20,w/h, 0.1, 800);
   camera.position.x = 0;
-  camera.position.y = 24;
-  camera.position.z = 40
+  camera.position.y = 50;
+  camera.position.z = 450
   camera.lookAt(scene.position);
 
   var renderer = canHasWebGL ? new THREE.WebGLRenderer({antialias: true}) : new THREE.CanvasRenderer()
@@ -40,8 +40,7 @@ function shape (selector, makeShape) {
   spotLight.shadowDarkness = 0.02
   scene.add( spotLight );
 
-  var shapes = [makeShape()]
-  shapes.forEach(function(shape, index){
+  shapes.forEach(function (shape) {
     scene.add(shape)
   })
 
@@ -78,46 +77,116 @@ function shape (selector, makeShape) {
   }, false );
 }
 
-function makeTorus(){
-  var size = 14;
-  var geometry = new THREE.TorusGeometry( size, 3, 10, 30 );
-//	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
+function makeTorus (x, y, z) {
+  var size = 14
+  var geometry = new THREE.TorusGeometry( size, 3, 3, 6 )
+//	var material = new THREE.MeshLambertMaterial({color: 0xffffff })
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
+  var obj = new THREE.Mesh(geometry, material)
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
+  obj.castShadow = true
+  obj.receiveShadow = false
+  return obj
+}
+
+function makeCylinder (x, y, z) {
+  var geometry = new THREE.CylinderGeometry(3,12,22,4,1,false)
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
+  var obj = new THREE.Mesh(geometry, material)
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
+  obj.castShadow = true
+  obj.receiveShadow = false
+  return obj
+}
+
+function makeOctahedron (x, y, z) {
+  var geometry = new THREE.OctahedronGeometry(14)
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
+  var obj = new THREE.Mesh(geometry, material)
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
+  obj.castShadow = true
+  obj.receiveShadow = false
+  return obj
+}
+
+function makePyramid (x, y, z) {
+  var size = 18;
+  var geometry = new THREE.TetrahedronGeometry(size);
+  //	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
   var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
   var obj = new THREE.Mesh(geometry, material);
-  obj.position.x = 0;
-  obj.position.y = 12;
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
   obj.castShadow = true;
   obj.receiveShadow = false;
   return obj
 }
 
-function makeCylinder () {
-  var geometry = new THREE.CylinderGeometry(3,12,22,20,5,false)
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
-  var obj = new THREE.Mesh(geometry, material)
-  obj.position.x = 0
-  obj.position.y = 12
-  obj.castShadow = true
-  obj.receiveShadow = false
-  return obj
-}
-
-function makeOctahedron () {
-  var geometry = new THREE.OctahedronGeometry(14, 3)
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
-  var obj = new THREE.Mesh(geometry, material)
-  obj.position.x = 0
-  obj.position.y = 12
-  obj.castShadow = true
-  obj.receiveShadow = false
+function makeCube (x, y, z) {
+  var cubeSize = 18;
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
+  var cubeGeometry = new THREE.CubeGeometry(cubeSize,cubeSize,cubeSize);
+  var obj = new THREE.Mesh(cubeGeometry, material);
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
+  obj.castShadow = true;
+  obj.receiveShadow = false;
   return obj
 }
 
 /*if (window.innerWidth < 600) return;*/
 
-shape('.octahedron', makeOctahedron)
-shape('.torus', makeTorus)
-shape('.cylinder', makeCylinder)
+makeScene('.scene', [
+  // Connection
+  makeOctahedron(-50, 52, -30),
+  makeOctahedron(-4, 64, 20),
+  makeOctahedron(-20, 41, 50),
+  makeOctahedron(-40, 70, -100),
+  // Awareness
+  makeCylinder(-97, 62, -30),
+  makeCylinder(-110, 62, 50),
+  // Building
+  makeTorus(-120, 18, 0),
+  makeTorus(-70, 1, 80),
+  makeTorus(-118, 18, -150),
+  // Understanding
+  makePyramid(-12, 1, 1),
+  makePyramid(12, 15, -100),
+  makePyramid(20, 1, 60),
+  // Revealing
+  makeCube(100, 70, -200),
+  makeCube(35, 50, 100),
+  makeCube(75, 30, 0),
+  makeCube(85, 0, -300),
+  makeCube(85, 0, 10)
+])
+
+/*makeScene('.octahedron', makeOctahedron)
+ makeScene('.torus', makeTorus)
+ makeScene('.cylinder', makeCylinder)*/
 
 $('.shapes a').click(function (e) {
   e.preventDefault()

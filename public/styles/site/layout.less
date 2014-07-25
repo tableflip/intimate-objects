@@ -297,7 +297,7 @@ body.practice{
     cursor: pointer;
   }
   .side {
-    background: #fff;
+    background: #fff url(../images/bg-card-vertical.png) center center;
     position: absolute;
     border: 1px solid #333;
     width:218px;
@@ -310,25 +310,29 @@ body.practice{
     transition: 0.5s;
     overflow: hidden;
   }
-  .side.front {
-    background: #fff url(../images/bg-card.png)
-  }
-  .card:nth-child(odd) .side.front {
-    background: #fff url(../images/bg-card-alt.png)
-  }
-  .card:nth-child(n+5):nth-child(-n+8):nth-child(even) .side.front {
-    background: #fff url(../images/bg-card-alt.png)
-  }
-  .card:nth-child(n+5):nth-child(-n+8):nth-child(odd) .side.front {
-    background: #fff url(../images/bg-card.png)
-  }
   .side.back {
-    line-height: 309px;
-    text-align: center;
-    font-size:20px;
-    font-weight:200;
     -webkit-transform:rotatey(180deg);
     transform:rotatey(180deg);
+    
+    > div {
+      display: table;
+      width: 100%;
+      height: 100%;
+      
+      > div {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        padding: 0 5px;
+      }
+    }
+    span {
+      background-color: #fff;
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 25px;
+      padding: 8px;
+    }
   }
   .card.over .side.front {
     -webkit-transform:rotatey(-180deg);
@@ -337,6 +341,21 @@ body.practice{
   .card.over .side.back {
     -webkit-transform:rotatey(0);
     transform:rotatey(0);
+  }
+  .side.circle {
+    background-image: url(../images/bg-card-circle.png);
+  }
+  .side.diagonal-bottom-left-top-right {
+    background-image: url(../images/bg-card-diagonal-bottom-left-top-right.png);
+  }
+  .side.diagonal-top-left-bottom-right {
+    background-image: url(../images/bg-card-diagonal-top-left-bottom-right.png);
+  }
+  .side.horizontal {
+    background-image: url(../images/bg-card-horizontal.png);
+  }
+  .side.vertical {
+    background-image: url(../images/bg-card-vertical.png);
   }
   .shapes {
     .torus, .octahedron, .cylinder {

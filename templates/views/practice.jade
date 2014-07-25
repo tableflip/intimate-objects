@@ -10,8 +10,11 @@ block content
       .cards.collapse
         each card in cards
           .card
-            .front.side
-            .back.side=card.text
+            .front.side(class=card.bg.front)
+            .back.side(class=card.bg.back)
+              div
+                div
+                  span=card.text
 
     section
       h3.box(data-toggle="collapse", data-target=".inspiration") Some visual inspiration

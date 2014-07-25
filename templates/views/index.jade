@@ -62,7 +62,7 @@ block content
         - var about = texts.about.content.html.split('\n')
         != about[0]
         p
-          a.show-more(href="#about-more", data-toggle="collapse", data-target="#about .more", onclick="return false") Read more...
+          a.show-more(href="#about-more", data-toggle="collapse", data-target="#about .more", onclick="$(this).remove()") Read more...
 
         #about-more.more.collapse
           - about.shift()

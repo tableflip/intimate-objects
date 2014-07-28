@@ -12,74 +12,10 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "How might you like to explore your partner(s) body?",
-    bg: {
-      front: "vertical",
-      back: "vertical"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "What parts of your body feel unexplored?",
-    bg: {
-      front: "diagonal-bottom-left-top-right",
-      back: "diagonal-bottom-left-top-right"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "How do you like to be touched?",
+    text: "How do you communicate with your partner(s) about your desires? What feels difficult or easy about that?",
     bg: {
       front: "horizontal",
       back: "horizontal"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "Are there any emotions or experiences you want to feel/have that you think an intimate object could facilitate?",
-    bg: {
-      front: "diagonal-top-left-bottom-right",
-      back: "diagonal-top-left-bottom-right"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "Could an object help you to explore in a new or different way?",
-    bg: {
-      front: "vertical",
-      back: "vertical"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "Have any objects ever featured in your desires or fantasies?",
-    bg: {
-      front: "diagonal-bottom-left-top-right",
-      back: "diagonal-bottom-left-top-right"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "Have you ever used an intimate object before?",
-    bg: {
-      front: "horizontal",
-      back: "horizontal"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "What questions do you have about your body?",
-    bg: {
-      front: "diagonal-top-left-bottom-right",
-      back: "diagonal-top-left-bottom-right"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "What kind of sensations do you like?",
-    bg: {
-      front: "vertical",
-      back: "vertical"
     },
     createdAt: Date.now()
   },
@@ -92,10 +28,50 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "How do you communicate with your partner(s) about your desires? What feels difficult or easy about that?",
+    text: "What parts of your body feel unexplored?",
+    bg: {
+      front: "diagonal-bottom-left-top-right",
+      back: "diagonal-bottom-left-top-right"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "What questions do you have about your body?",
+    bg: {
+      front: "diagonal-top-left-bottom-right",
+      back: "diagonal-top-left-bottom-right"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "How might you like to explore your partner(s) body?",
+    bg: {
+      front: "vertical",
+      back: "vertical"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "Have you ever used an intimate object before?",
     bg: {
       front: "horizontal",
       back: "horizontal"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "Have any objects ever featured in your desires or fantasies?",
+    bg: {
+      front: "diagonal-bottom-left-top-right",
+      back: "diagonal-bottom-left-top-right"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "Are there any emotions or experiences you want to feel/have that you think an intimate object could facilitate?",
+    bg: {
+      front: "diagonal-top-left-bottom-right",
+      back: "diagonal-top-left-bottom-right"
     },
     createdAt: Date.now()
   },
@@ -108,6 +84,38 @@ var items = [
     createdAt: Date.now()
   },
   {
+    text: "How do you like to be touched?",
+    bg: {
+      front: "horizontal",
+      back: "horizontal"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "Could an object help you to explore in a new or different way?",
+    bg: {
+      front: "vertical",
+      back: "vertical"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "What size is it?",
+    bg: {
+      front: "circle",
+      back: "circle"
+    },
+    createdAt: Date.now()
+  },
+  {
+    text: "What colour is it?",
+    bg: {
+      front: "circle",
+      back: "circle"
+    },
+    createdAt: Date.now()
+  },
+  {
     text: "Why is it important? What meaning does it have?",
     bg: {
       front: "circle",
@@ -116,7 +124,7 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "How would you describe it?",
+    text: "What will it DO?",
     bg: {
       front: "circle",
       back: "circle"
@@ -140,23 +148,7 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "What colour is it?",
-    bg: {
-      front: "circle",
-      back: "circle"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "What size is it?",
-    bg: {
-      front: "circle",
-      back: "circle"
-    },
-    createdAt: Date.now()
-  },
-  {
-    text: "What will it DO?",
+    text: "How would you describe it?",
     bg: {
       front: "circle",
       back: "circle"
@@ -172,7 +164,7 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "How will it make you feel?",
+    text: "Do you use it alone?",
     bg: {
       front: "circle",
       back: "circle"
@@ -180,7 +172,7 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "Does it have a texture?",
+    text: "How will it make you feel?",
     bg: {
       front: "circle",
       back: "circle"
@@ -196,7 +188,7 @@ var items = [
     createdAt: Date.now()
   },
   {
-    text: "Do you use it alone?",
+    text: "Does it have a texture?",
     bg: {
       front: "circle",
       back: "circle"

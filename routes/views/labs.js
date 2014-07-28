@@ -18,7 +18,6 @@ module.exports = function (req, res) {
       IntimacyLab.model
         .find({"date": {"$gte": new Date()}})
         .sort({"date": "1"})
-        .limit(3)
         .exec(cb)
     },
     function (cb) {

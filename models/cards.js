@@ -17,8 +17,8 @@ Card.add({
   createdAt: { type: Date, default: Date.now },
   text: { type: Types.Text, initial: true },
   bg: {
-    front: {type: Types.Select, options: bgs, label: "Front Background"},
-    back: {type: Types.Select, options: bgs, label: "Back Background"}
+    front: {type: Types.Select, options: bgs, label: "Front Background", initial: true},
+    back: {type: Types.Select, options: bgs, label: "Back Background", initial: true}
   }
 })
 

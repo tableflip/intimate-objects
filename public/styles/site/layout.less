@@ -257,12 +257,18 @@ canvas{
     background-size: 100% auto;
   }
   .hatched {
-    background: url(../images/gif/square.gif) no-repeat;
+    background: url(../images/gif/disable/square.png) no-repeat;
     background-size: 100% auto;
+    span {
+      color: rgba(0, 0, 0, 0.5)
+    }
   }
   .crossed {
-    background: url(../images/gif/ex5.gif) no-repeat;
+    background: url(../images/gif/disable/ex.png) no-repeat;
     background-size: 100% auto;
+    span {
+      color: rgba(0, 0, 0, 0.5)
+    }
   }
 }
 
@@ -359,11 +365,125 @@ body.practice{
     background-image: url(../images/bg-card-vertical.png);
   }
   .shapes {
+    position: relative;
+
+    .scene {
+      position: relative;
+      width: 940px;
+
+      a {
+        position: absolute;
+        //background: red;
+        width: 10px;
+        height: 10px;
+        
+        &[href="#connection-0"] {
+          top: 13px;
+          left: 337px;
+          width: 57px;
+          height: 50px;
+        }
+        &[href="#connection-1"] {
+          top: 9px;
+          left: 415px;
+          width: 80px;
+          height: 76px;
+        }
+        &[href="#connection-2"] {
+          top: 50px;
+          left: 287px;
+          width: 66px;
+          height: 65px;
+        }
+        &[href="#connection-3"] {
+          top: 85px;
+          left: 354px;
+          width: 88px;
+          height: 81px;
+        }
+        &[href="#awareness-0"] {
+          top: 7px;
+          left: 21px;
+          width: 110px;
+          height: 95px;
+        }
+        &[href="#awareness-1"] {
+          top: 10px;
+          left: 144px;
+          width: 88px;
+          height: 91px;
+        }
+        &[href="#building-0"] {
+          top: 146px;
+          left: 34px;
+          width: 107px;
+          height: 97px;
+        }
+        &[href="#building-1"] {
+          top: 133px;
+          left: 158px;
+          width: 66px;
+          height: 70px;
+        }
+        &[href="#building-2"] {
+          top: 222px;
+          left: 143px;
+          width: 120px;
+          height: 119px;
+        }
+        &[href="#understanding-0"] {
+          top: 146px;
+          left: 482px;
+          width: 78px;
+          height: 70px;
+        }
+        &[href="#understanding-1"] {
+          top: 204px;
+          left: 408px;
+          width: 96px;
+          height: 89px;
+        }
+        &[href="#understanding-2"] {
+          top: 222px;
+          left: 545px;
+          width: 109px;
+          height: 105px;
+        }
+        &[href="#revealing-0"] {
+          top: 34px;
+          left: 623px;
+          width: 118px;
+          height: 116px;
+        }
+        &[href="#revealing-1"] {
+          top: 13px;
+          left: 742px;
+          width: 69px;
+          height: 67px;
+        }
+        &[href="#revealing-2"] {
+          top: 150px;
+          left: 629px;
+          width: 74px;
+          height: 71px;
+        }
+        &[href="#revealing-3"] {
+          top: 109px;
+          left: 716px;
+          width: 102px;
+          height: 96px;
+        }
+        &[href="#revealing-4"] {
+          top: 205px;
+          left: 750px;
+          width: 108px;
+          height: 104px;
+        }
+      }
+    }
     h4 {
       text-align: center;
-    }
-    .torus, .octahedron, .cylinder {
-      display: block;
+      margin-top: 20px;
     }
   }
   .fullscreen{

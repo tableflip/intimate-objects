@@ -173,20 +173,37 @@ makeScene('.scene', [
   makeTorus(-70, 1, 80),
   makeTorus(-118, 18, -150),
   // Understanding
-  makePyramid(-12, 1, 1),
-  makePyramid(12, 15, -100),
-  makePyramid(20, 1, 60),
+  makePyramid(-2, 1, 1),
+  makePyramid(22, 15, -100),
+  makePyramid(35, 1, 60),
   // Revealing
-  makeCube(100, 70, -200),
-  makeCube(35, 50, 100),
-  makeCube(75, 30, 0),
-  makeCube(85, 0, -300),
-  makeCube(85, 0, 10)
+  makeCube(140, 70, -200),
+  makeCube(52, 50, 100),
+  makeCube(95, 30, 0),
+  makeCube(105, 0, -300),
+  makeCube(105, 0, 10)
 ])
 
 /*makeScene('.octahedron', makeOctahedron)
  makeScene('.torus', makeTorus)
  makeScene('.cylinder', makeCylinder)*/
+
+var titles = {
+  '#understanding': 'Understanding',
+  '#revealing': 'Revealing',
+  '#building': 'Building',
+  '#awareness': 'Awareness',
+  '#connection': 'Connection'
+}
+
+$('.shapes a').hover(function () {
+  var title = $('.shapes h4')
+  var link = $(this)
+  var text = titles[link.attr('href').split('-')[0]]
+  if (title.text() != text) {
+    title.text(text)
+  }
+})
 
 $('.shapes a').click(function (e) {
   e.preventDefault()

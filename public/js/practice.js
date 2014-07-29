@@ -197,23 +197,28 @@ makeScene('.scene', connectionObjs.concat(awarenessObjs).concat(buildingObjs).co
 var data = {
   '#understanding': {
     title: 'Understanding',
-    objs: understandingObjs
+    objs: understandingObjs,
+    factory: makePyramid
   },
   '#revealing': {
     title: 'Revealing',
-    objs: revealingObjs
+    objs: revealingObjs,
+    factory: makeCube
   },
   '#building': {
     title: 'Building',
-    objs: buildingObjs
+    objs: buildingObjs,
+    factory: makeTorus
   },
   '#awareness': {
     title: 'Awareness',
-    objs: awarenessObjs
+    objs: awarenessObjs,
+    factory: makeCylinder
   },
   '#connection': {
     title: 'Connection',
-    objs: connectionObjs
+    objs: connectionObjs,
+    factory: makeOctahedron
   }
 }
 
@@ -239,20 +244,31 @@ $('.shapes a').hover(function () {
 
 $('.shapes a').click(function (e) {
   e.preventDefault()
-  $($(this).attr('href')).show()
+
+  var link = $(this)
+  var dialog = $(link.attr('href'))
+
+  dialog.show()
   $("#mask").show()
+
+  var split = link.attr('href').split('-')
+  var factory = data[split[0]].factory
+
+  makeScene($('.lhs', dialog), [factory(0, 25, 280)])
 })
 
 $(document).on('keydown', function (evt) {
   if (evt.keyCode === 27) {
     $('.fullscreen').hide()
     $("#mask").hide()
+    $('.fullscreen .lhs').empty()
   }
 })
 
 $('.close, #mask').on('click', function(){
   $('.fullscreen').hide()
   $("#mask").hide()
+  $('.fullscreen .lhs').empty()
 })
 
 $('.tryme.collapse').collapse()

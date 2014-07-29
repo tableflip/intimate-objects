@@ -144,7 +144,7 @@ function makePyramid (x, y, z) {
 function makeCube (x, y, z) {
   var cubeSize = 18;
   var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
-  var cubeGeometry = new THREE.CubeGeometry(cubeSize,cubeSize,cubeSize);
+  var cubeGeometry = new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize);
   var obj = new THREE.Mesh(cubeGeometry, material);
   obj.position.x = x
   obj.position.y = y
@@ -159,50 +159,82 @@ function makeCube (x, y, z) {
 
 /*if (window.innerWidth < 600) return;*/
 
-makeScene('.scene', [
-  // Connection
-  makeOctahedron(-50, 52, -30),
-  makeOctahedron(-4, 64, 20),
-  makeOctahedron(-20, 41, 50),
+var connectionObjs = [
   makeOctahedron(-40, 70, -100),
-  // Awareness
-  makeCylinder(-97, 62, -30),
+  makeOctahedron(-4, 64, 20),
+  makeOctahedron(-50, 52, -30),
+  makeOctahedron(-20, 41, 50)
+]
+
+var awarenessObjs = [
   makeCylinder(-110, 62, 50),
-  // Building
+  makeCylinder(-97, 62, -30)
+]
+
+var buildingObjs = [
   makeTorus(-120, 18, 0),
-  makeTorus(-70, 1, 80),
   makeTorus(-118, 18, -150),
-  // Understanding
-  makePyramid(-2, 1, 1),
+  makeTorus(-70, 1, 80)
+]
+
+var understandingObjs = [
+
   makePyramid(22, 15, -100),
-  makePyramid(35, 1, 60),
-  // Revealing
-  makeCube(140, 70, -200),
+  makePyramid(-2, 1, 1),
+  makePyramid(35, 1, 60)
+]
+
+var revealingObjs = [
   makeCube(52, 50, 100),
-  makeCube(95, 30, 0),
+  makeCube(140, 70, -200),
   makeCube(105, 0, -300),
+  makeCube(95, 30, 0),
   makeCube(105, 0, 10)
-])
+]
 
-/*makeScene('.octahedron', makeOctahedron)
- makeScene('.torus', makeTorus)
- makeScene('.cylinder', makeCylinder)*/
+makeScene('.scene', connectionObjs.concat(awarenessObjs).concat(buildingObjs).concat(understandingObjs).concat(revealingObjs))
 
-var titles = {
-  '#understanding': 'Understanding',
-  '#revealing': 'Revealing',
-  '#building': 'Building',
-  '#awareness': 'Awareness',
-  '#connection': 'Connection'
+var data = {
+  '#understanding': {
+    title: 'Understanding',
+    objs: understandingObjs
+  },
+  '#revealing': {
+    title: 'Revealing',
+    objs: revealingObjs
+  },
+  '#building': {
+    title: 'Building',
+    objs: buildingObjs
+  },
+  '#awareness': {
+    title: 'Awareness',
+    objs: awarenessObjs
+  },
+  '#connection': {
+    title: 'Connection',
+    objs: connectionObjs
+  }
 }
 
 $('.shapes a').hover(function () {
   var title = $('.shapes h4')
   var link = $(this)
-  var text = titles[link.attr('href').split('-')[0]]
+
+  var split = link.attr('href').split('-')
+  var text = data[split[0]].title
+  var obj = data[split[0]].objs[parseInt(split[1], 10)]
+
+  obj.material.color = new THREE.Color("#00cc99")
+
   if (title.text() != text) {
     title.text(text)
   }
+}, function () {
+  var link = $(this)
+  var split = link.attr('href').split('-')
+  var obj = data[split[0]].objs[parseInt(split[1], 10)]
+  obj.material.color = new THREE.Color("#000000")
 })
 
 $('.shapes a').click(function (e) {

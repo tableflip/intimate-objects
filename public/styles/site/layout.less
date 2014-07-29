@@ -495,6 +495,8 @@ body.practice{
     bottom:0;
     background: white;
     text-align: center;
+    overflow-y: auto;
+    z-index: 100;
 
     .close {
       position:absolute;
@@ -505,8 +507,46 @@ body.practice{
       margin: 120px auto;
     }
   }
+  #mask {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 50;
+  }
   .tryme svg{
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  body.practice {
+    .fullscreen {
+      top: 50%;
+      bottom: auto;
+      border: 1px solid #333;
+      height: 600px;
+      margin-top: -300px;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  body.practice {
+    .fullscreen {
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      left: 50%;
+      border: 1px solid #333;
+      width: 992px;
+      height: 700px;
+      margin: -350px 0 0 -496px;
+    }
   }
 }
 

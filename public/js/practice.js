@@ -240,16 +240,19 @@ $('.shapes a').hover(function () {
 $('.shapes a').click(function (e) {
   e.preventDefault()
   $($(this).attr('href')).show()
+  $("#mask").show()
 })
 
 $(document).on('keydown', function (evt) {
   if (evt.keyCode === 27) {
     $('.fullscreen').hide()
+    $("#mask").hide()
   }
 })
 
-$('.close').on('click', function(){
+$('.close, #mask').on('click', function(){
   $('.fullscreen').hide()
+  $("#mask").hide()
 })
 
 $('.tryme.collapse').collapse()

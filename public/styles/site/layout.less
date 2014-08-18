@@ -123,6 +123,16 @@ canvas{
     font-weight:200;
     font-size: 20px;
     font-style:italic;
+    opacity: 0.6;
+    transition: opacity 600ms;
+    -webkit-transition: opacity 600ms;
+    background: -webkit-linear-gradient(left, #333, #eee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+  }
+  .back:hover{
+    opacity: 1;
   }
 }
 .home #footer .back {

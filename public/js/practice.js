@@ -1,4 +1,4 @@
-$('.card').on('click', function () {
+$('.card').hover(function () {
   $(this).toggleClass('over')
 })
 

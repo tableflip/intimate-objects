@@ -53,6 +53,7 @@ keystone.set('locals', {
   editable: keystone.content.editable
 })
 
+keystone.set('logger', 'default')
 keystone.set('routes', require('./routes'))
 
 keystone.set('nav', {

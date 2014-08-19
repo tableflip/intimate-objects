@@ -53,7 +53,19 @@ function shape (selector, makeShape) {
 	scene.add(plane);
 
 // add the output of the renderer to the html element
-	$(selector).append(renderer.domElement);
+  $selector.append(renderer.domElement);
+
+  $selector
+    .on('mouseenter', function (evt) {
+      shapes.forEach(function(shape) {
+        shape.material.color = new THREE.Color("#00cc99")
+       })
+    })
+    .on('mouseleave', function (evt) {
+      shapes.forEach(function(shape) {
+        shape.material.color = new THREE.Color("#000000")
+      })
+    })
 
 	function render() {
 		requestAnimationFrame(render);
@@ -72,6 +84,8 @@ function shape (selector, makeShape) {
 		camera.updateProjectionMatrix();
 		renderer.setSize( width, h );
 	}, false );
+
+
 }
 
 function makeCube(){
@@ -123,7 +137,17 @@ function makeSphere () {
   return obj
 }
 
+$(document).on('ready', function(){
+
+
+
+
+})
+
+
+
 /*if (window.innerWidth < 600) return;*/
 shape(".cube", makeCube)
 shape(".torus", makeSphere)
 shape(".pyramid", makePyramid)
+

@@ -20,5 +20,8 @@
   },
   "scripts": {
     "start": "node keystone"
+  },
+  "devDependencies": {
+    "replify": "^1.2.0"
   }
 }

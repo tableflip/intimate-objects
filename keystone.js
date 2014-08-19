@@ -2,6 +2,7 @@
 // customising the .env file in your project's root folder.
 require('dotenv').load()
 
+
 var keystone = require('keystone')
 var config = require('config')
 
@@ -61,4 +62,16 @@ keystone.set('nav', {
 
 keystone.set('default region', 'uk')
 
+
+if (config.basicAuth && config.basicAuth.enabled) {
+  keystone.pre('routes', keystone.express.basicAuth(function(user, pass){
+    return config.basicAuth.user == user && config.basicAuth.password == pass
+  }))
+  console.log('BasicAuth enabled')
+}
+
 keystone.start()
+
+// remote debugging via repl-client
+var replify = require('replify')
+replify('io', keystone)

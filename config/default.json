@@ -4,5 +4,10 @@
   "googleApiKey": "AIzaSyBXZpv_R4q6dFvxXH_-DLpEPrhD-NNjgqI",
   "mandrillApiKey": "",
   "mandrillUsername": "",
-  "labEmail": "labs@intimateobjects.io"
+  "labEmail": "labs@intimateobjects.io",
+  "basicAuth":{
+    "enabled": false,
+    "user": "fake",
+    "password": "changeme"
+  }
 }

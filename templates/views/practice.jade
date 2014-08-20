@@ -41,14 +41,24 @@ block content
     section
       h3.box(data-toggle="collapse", data-target=".tryme") Something to try
       //h3.box(style="opacity:0.5") Something to try
-      .tryme.collapse.in
+      .tryme
+        h2 Micro Experiences
         p Micro Experiences are for exploring.You can do them alone, you can do them with a partner(s), and you can do them with friends. You might want to take a tentative step or to leap in to experimenting straight away. We have themed them around 5 areas:
-        ol
-          li Connection - experiences that build connection
-          li Awareness - experiences that create more awareness (of one another, or space, or time etc)
-          li Understanding - experiences that open up more understanding of yourself or of one another, and of your emotional responses.
-          li Revealing - experiences that go deeper or reveal more, or reveal something new or different.
-          li Building - these experiences are to extend and develop our understanding of relationships with others. and with ourselves.
+        .micro-experiences-legend
+          .row
+            .col-sm-3
+              .key.connection Experiences that build connection
+            .col-sm-3.col-sm-offset-1
+              .key.awareness Experiences that create more awareness (of one another, or space, or time etc)
+            .col-sm-4.col-sm-offset-1
+              .key.understanding Experiences that open up more understanding of yourself or of one another, and of your emotional responses.
+
+          .row
+            .col-sm-3.col-sm-offset-2
+              .key.revealing Experiences that go deeper or reveal more, or reveal something new or different.
+            .col-sm-4.col-sm-offset-1
+              .key.building These experiences are to extend and develop our understanding of relationships with others. and with ourselves.
+
         .shapes
           h4 &nbsp;
           div.scene

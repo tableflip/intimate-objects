@@ -157,13 +157,29 @@ function makeCube (x, y, z) {
   return obj
 }
 
+function makeSphere (x, y, z) {
+  var size = 14;
+  var geometry = new THREE.SphereGeometry(size);
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
+  var obj = new THREE.Mesh(geometry, material);
+  obj.position.x = x
+  obj.position.y = y
+  obj.position.z = z
+  obj.rotation.x = -Math.random()
+  obj.rotation.y = Math.random()
+  obj.rotation.z = Math.random()
+  obj.castShadow = true;
+  obj.receiveShadow = false;
+  return obj
+}
+
 /*if (window.innerWidth < 600) return;*/
 
 var connectionObjs = [
-  makeOctahedron(-40, 70, -100),
-  makeOctahedron(-4, 64, 20),
-  makeOctahedron(-50, 52, -30),
-  makeOctahedron(-20, 41, 50)
+  makeSphere(-60, 70, -100),
+  makeSphere(-4, 64, 20),
+  makeSphere(-50, 22, -30),
+  makeSphere(-20, 40, 50)
 ]
 
 var awarenessObjs = [
@@ -218,7 +234,7 @@ var data = {
   '#connection': {
     title: 'Connection',
     objs: connectionObjs,
-    factory: makeOctahedron
+    factory: makeSphere
   }
 }
 

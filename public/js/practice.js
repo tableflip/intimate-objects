@@ -16,44 +16,22 @@ function makeScene (selector, shapes) {
   var $selector = $(selector)
   var w = $selector.width()
   var h = 500
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(20,w/h, 0.1, 800);
-  camera.position.x = 0;
-  camera.position.y = 50;
-  camera.position.z = 450
-  camera.lookAt(scene.position);
 
   var renderer = canHasWebGL ? new THREE.WebGLRenderer({antialias: true}) : new THREE.CanvasRenderer()
-
   renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
   renderer.setSize(w, h);
   renderer.shadowMapEnabled = true;
   renderer.shadowMapSoft = true;
 
-  var ambientLight = new THREE.AmbientLight(0xdddddd);
-  scene.add(ambientLight);
-
-  var spotLight = new THREE.SpotLight( 0xdddddd, 0.2 );
-  spotLight.position.set( 0, 100, -9 );
-  spotLight.castShadow = true;
-  spotLight.shadowCameraVisible = false;
-  spotLight.shadowDarkness = 0.02
-  scene.add( spotLight );
+  console.log('wh', w, h)
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(20,w/h, 0.1, 800);
+  camera.position.set(0,50,450)
+  camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
 
   shapes.forEach(function (shape) {
     scene.add(shape)
   })
-
-  var planeGeometry = new THREE.PlaneGeometry(w,46);
-  var planeMaterial = new THREE.MeshBasicMaterial({color: 0xffffff});
-  planeMaterial.opacity = 1
-  var plane = new THREE.Mesh(planeGeometry, planeMaterial);
-  plane.receiveShadow = true;
-  plane.rotation.x=-0.5*Math.PI;
-  plane.position.x=0;
-  plane.position.y=-18;
-  plane.position.z=0;
-  scene.add(plane);
 
 // add the output of the renderer to the html element
   $(selector).append(renderer.domElement);
@@ -70,145 +48,175 @@ function makeScene (selector, shapes) {
   render();
 
   window.addEventListener( 'resize', function(){
-    var width = $selector.width()
-    camera.aspect = width / h
+    w = $selector.width()
+    renderer.setSize( w, h );
+    camera.aspect = w / h
     camera.updateProjectionMatrix();
-    renderer.setSize( width, h );
   }, false );
+
+  // Figure out which object the user clicked on
+  projector = new THREE.Projector();
+  mouseVector = new THREE.Vector3();
+
+  var currentlySelectedShape = null
+
+  $(window).on('mousemove', function (e) {
+    var offset = $selector.offset()
+    var relX = e.pageX - offset.left
+    var relY = e.pageY - offset.top
+
+    mouseVector.x = 2 * (relX / w) - 1
+    mouseVector.y = 1 - 2 * ( relY / h )
+
+    var raycaster = projector.pickingRay( mouseVector.clone(), camera )
+    var intersects = raycaster.intersectObjects( shapes )
+
+    shapes.forEach(function (obj) {
+      obj.material.color = new THREE.Color("#000000")
+    })
+
+    intersects.forEach(function(i){
+      var obj = i.object
+      obj.material.color = new THREE.Color("#00cc99")
+    })
+
+    if(intersects.length > 0) {
+      currentlySelectedShape = intersects[0].object
+    } else {
+//      currentlySelectedShape = null
+    }
+  })
+
+  var moving = null
+
+   $(window).on('keydown', function(evt){
+    if(!moving) return
+    if (evt.keyCode === 37) {
+      evt.preventDefault()
+      moving.position.x-=3
+    }
+    if (evt.keyCode === 38) {
+      evt.preventDefault()
+      moving.position.y+=3
+    }
+    if (evt.keyCode === 39) {
+      evt.preventDefault()
+      moving.position.x+=3
+    }
+    if (evt.keyCode === 40) {
+      evt.preventDefault()
+      moving.position.y-=3
+    }
+  })
+
+  $selector.on('click', function(){
+    console.log('click', currentlySelectedShape)
+    if(!currentlySelectedShape) return
+
+    moving = currentlySelectedShape
+
+    var dialog = $(currentlySelectedShape.name)
+
+    dialog.show()
+    $("#mask").show()
+
+    var factory = currentlySelectedShape.factory
+
+    makeScene($('.lhs', dialog), [factory(0, 25, 280)])
+  })
+
+}
+
+function makeShape (geometry, x, y, z) {
+  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
+  var obj = new THREE.Mesh(geometry, material)
+  obj.position.set(x,y,z)
+  obj.rotation.set(-Math.random(), Math.random(), Math.random() )
+//  obj.castShadow = true
+//  obj.receiveShadow = false
+  return obj
 }
 
 function makeTorus (x, y, z) {
   var size = 14
   var geometry = new THREE.TorusGeometry( size, 3, 3, 6 )
-//	var material = new THREE.MeshLambertMaterial({color: 0xffffff })
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
-  var obj = new THREE.Mesh(geometry, material)
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true
-  obj.receiveShadow = false
-  return obj
+  return makeShape(geometry, x,y,z)
 }
 
 function makeCylinder (x, y, z) {
   var geometry = new THREE.CylinderGeometry(3,12,22,4,1,false)
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
-  var obj = new THREE.Mesh(geometry, material)
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true
-  obj.receiveShadow = false
-  return obj
+  return makeShape(geometry, x,y,z)
 }
 
 function makeOctahedron (x, y, z) {
   var geometry = new THREE.OctahedronGeometry(14)
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
-  var obj = new THREE.Mesh(geometry, material)
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true
-  obj.receiveShadow = false
-  return obj
+  return makeShape(geometry, x,y,z)
 }
 
 function makePyramid (x, y, z) {
   var size = 18;
   var geometry = new THREE.TetrahedronGeometry(size);
-  //	var material = new THREE.MeshLambertMaterial({color: 0xffffff });
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
-  var obj = new THREE.Mesh(geometry, material);
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true;
-  obj.receiveShadow = false;
-  return obj
+  return makeShape(geometry, x,y,z)
 }
 
 function makeCube (x, y, z) {
   var cubeSize = 18;
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
-  var cubeGeometry = new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize);
-  var obj = new THREE.Mesh(cubeGeometry, material);
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true;
-  obj.receiveShadow = false;
-  return obj
+  var geometry = new THREE.BoxGeometry(cubeSize,cubeSize,cubeSize);
+  return makeShape(geometry, x,y,z)
 }
 
 function makeSphere (x, y, z) {
   var size = 14;
   var geometry = new THREE.SphereGeometry(size);
-  var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1});
-  var obj = new THREE.Mesh(geometry, material);
-  obj.position.x = x
-  obj.position.y = y
-  obj.position.z = z
-  obj.rotation.x = -Math.random()
-  obj.rotation.y = Math.random()
-  obj.rotation.z = Math.random()
-  obj.castShadow = true;
-  obj.receiveShadow = false;
-  return obj
+  return makeShape(geometry, x,y,z)
 }
 
 /*if (window.innerWidth < 600) return;*/
 
+/*
+{
+  "#understanding":[[25,69,-100],[-11,28,1],[56,-2,60]],
+  "#revealing":[[76,-31,100],[140,70,-200],[-153,54,-300],[-130,63,0],[-81,-63,10]],
+  "#building":[[-120,15,0],[152,-3,-150],[-34,-14,80]],
+  "#awareness":[[13,-10,50],[-70,11,-30]],
+  "#connection":[[48,-86,-100],[-46,61,20],[61,43,-30],[-116,-29,50]]
+}
+*/
 var connectionObjs = [
-  makeSphere(-60, 70, -100),
-  makeSphere(-4, 64, 20),
-  makeSphere(-50, 22, -30),
-  makeSphere(-20, 40, 50)
+  makeSphere(48,-86,-100),
+  makeSphere(-46,61,20),
+  makeSphere(61,43,-30),
+  makeSphere(-116,-29,50)
 ]
 
 var awarenessObjs = [
-  makeCylinder(-110, 62, 50),
-  makeCylinder(-97, 62, -30)
+  makeCylinder(13,-10,50),
+  makeCylinder(-70,11,-30)
 ]
 
 var buildingObjs = [
-  makeTorus(-120, 18, 0),
-  makeTorus(-118, 18, -150),
-  makeTorus(-70, 1, 80)
+  makeTorus(-120,15,0),
+  makeTorus(152,-3,-150),
+  makeTorus(-34,-14,80)
 ]
 
 var understandingObjs = [
-
-  makePyramid(22, 15, -100),
-  makePyramid(-2, 1, 1),
-  makePyramid(35, 1, 60)
+  makePyramid(25,62,-100),
+  makePyramid(-11,28,1),
+  makePyramid(56,-2,60)
 ]
 
 var revealingObjs = [
-  makeCube(52, 50, 100),
-  makeCube(140, 70, -200),
-  makeCube(105, 0, -300),
-  makeCube(95, 30, 0),
-  makeCube(105, 0, 10)
+  makeCube(76,-31,100),
+  makeCube(140,70,-200),
+  makeCube(-153,54,-300),
+  makeCube(-130,63,0),
+  makeCube(-81,-63,10)
 ]
 
-makeScene('.scene', connectionObjs.concat(awarenessObjs).concat(buildingObjs).concat(understandingObjs).concat(revealingObjs))
+$(document).on('ready', function(){
+  makeScene('.scene', connectionObjs.concat(awarenessObjs).concat(buildingObjs).concat(understandingObjs).concat(revealingObjs))
+})
 
 var data = {
   '#understanding': {
@@ -238,40 +246,25 @@ var data = {
   }
 }
 
-$('.shapes a').hover(function () {
-  var title = $('.shapes h4')
-  var link = $(this)
-
-  var split = link.attr('href').split('-')
-  var text = data[split[0]].title
-  var obj = data[split[0]].objs[parseInt(split[1], 10)]
-
-  obj.material.color = new THREE.Color("#00cc99")
-
-  if (title.text() != text) {
-    title.text(text)
-  }
-}, function () {
-  var link = $(this)
-  var split = link.attr('href').split('-')
-  var obj = data[split[0]].objs[parseInt(split[1], 10)]
-  obj.material.color = new THREE.Color("#000000")
+// add a name to each obeject, a ref to the in page anchor for the corresponding popup
+Object.keys(data).forEach(function(key) {
+  data[key].objs.forEach(function(obj, index) {
+    obj.name = key + '-' + index
+    obj.factory = data[key].factory
+  })
 })
 
-$('.shapes a').click(function (e) {
-  e.preventDefault()
-
-  var link = $(this)
-  var dialog = $(link.attr('href'))
-
-  dialog.show()
-  $("#mask").show()
-
-  var split = link.attr('href').split('-')
-  var factory = data[split[0]].factory
-
-  makeScene($('.lhs', dialog), [factory(0, 25, 280)])
-})
+function positions(){
+  var res = {}
+  Object.keys(data).forEach(function(key) {
+    res[key] = []
+    data[key].objs.forEach(function(obj, index) {
+      var p = obj.position
+      res[key].push([p.x, p.y, p.z,])
+    })
+  })
+  console.log(JSON.stringify(res))
+}
 
 $(document).on('keydown', function (evt) {
   if (evt.keyCode === 27) {
@@ -288,4 +281,6 @@ $('.close, #mask').on('click', function(){
 })
 
 $('.tryme.collapse').collapse()
+
+
 

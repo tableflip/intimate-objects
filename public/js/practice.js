@@ -17,8 +17,8 @@ function makeScene (selector, shapes) {
   var w = $selector.width()
   var h = 500
 
-  var renderer = canHasWebGL ? new THREE.WebGLRenderer({antialias: true}) : new THREE.CanvasRenderer()
-  renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
+  var renderer = canHasWebGL ? new THREE.WebGLRenderer({antialias: true,  alpha: true }) : new THREE.CanvasRenderer()
+//  renderer.setClearColor(new THREE.Color(0xFFFFFF, 1.0));
   renderer.setSize(w, h);
   renderer.shadowMapEnabled = true;
   renderer.shadowMapSoft = true;
@@ -32,11 +32,6 @@ function makeScene (selector, shapes) {
   shapes.forEach(function (shape) {
     scene.add(shape)
   })
-
-//  for (var i = 0; i < 1; i++) {
-//    var p = pos()
-//    scene.add(makeParticle(0, 0, 0))
-//  }
 
 // add the output of the renderer to the html element
   $(selector).append(renderer.domElement);
@@ -116,7 +111,7 @@ function makeScene (selector, shapes) {
 
   $selector.on('click', function(){
     console.log('click', currentlySelectedShape)
-    if(!currentlySelectedShape) return
+    if(!currentlySelectedShape || !currentlySelectedShape.factory) return
 
     moving = currentlySelectedShape
 
@@ -133,11 +128,17 @@ function makeScene (selector, shapes) {
 }
 
 function pos () {
-  return {
-    x: Math.random(),
-    y: Math.random(),
-    z: Math.random()
+  var res =  {
+    x: randomNumberRange(-50, 50),
+    y: randomNumberRange(-50, 50),
+    z: -300
   }
+  console.log('pos', res)
+  return res
+}
+
+function randomNumberRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function makeShape (geometry, x, y, z) {
@@ -185,66 +186,62 @@ function makeSphere (x, y, z) {
 }
 
 function makeParticle (x,y,z) {
-  var PI2 = Math.PI * 2;
-  var particleMaterial = new THREE.SpriteCanvasMaterial({
-    color: 0x000000,
-    program: function ( context ) {
-      context.beginPath();
-      context.arc( 0, 0, 0.5, 0, PI2, true );
-      context.fill();
-    }
-  })
-  var particle = new THREE.Sprite( particleMaterial );
-  particle.position.set(x,y,z)
-  particle.scale.x = particle.scale.y = 16;
-  return particle
+  var size = 1;
+  var geometry = new THREE.SphereGeometry(size);
+  return makeShape(geometry, x,y,z)
 }
 
 /*if (window.innerWidth < 600) return;*/
 
 /*
 {
-  "#understanding":[[25,69,-100],[-11,28,1],[56,-2,60]],
-  "#revealing":[[76,-31,100],[140,70,-200],[-153,54,-300],[-130,63,0],[-81,-63,10]],
-  "#building":[[-120,15,0],[152,-3,-150],[-34,-14,80]],
-  "#awareness":[[13,-10,50],[-70,11,-30]],
-  "#connection":[[48,-86,-100],[-46,61,20],[61,43,-30],[-116,-29,50]]
+ {"#understanding":[[25,62,-100],[-71,-8,1],[71,4,60]],
+ "#revealing":[[67,-28,100],[152,61,-200],[-111,33,-300],[-112,54,0],[6,-18,10]],
+ "#building":[[-30,9,0],[158,0,-150],[-37,-32,80]],
+ "#awareness":[[22,23,50],[-100,14,-30]],
+ "#connection":[[51,-47,-100],[-34,55,20],[73,46,-30],[-101,-29,50]]}
 }
 */
 var connectionObjs = [
-  makeSphere(48,-86,-100),
-  makeSphere(-46,61,20),
-  makeSphere(61,43,-30),
-  makeSphere(-116,-29,50)
+  makeSphere(51,-47,-100),
+  makeSphere(-34,55,20),
+  makeSphere(73,46,-30),
+  makeSphere(-101,-29,50)
 ]
 
 var awarenessObjs = [
-  makeCylinder(13,-10,50),
-  makeCylinder(-70,11,-30)
+  makeCylinder(22,23,50),
+  makeCylinder(-100,14,-30)
 ]
 
 var buildingObjs = [
-  makeTorus(-120,15,0),
-  makeTorus(152,-3,-150),
-  makeTorus(-34,-14,80)
+  makeTorus(-30,9,0),
+  makeTorus(158,0,-150),
+  makeTorus(-37,-32,80)
 ]
 
 var understandingObjs = [
   makePyramid(25,62,-100),
-  makePyramid(-11,28,1),
-  makePyramid(56,-2,60)
+  makePyramid(-71,-8,1),
+  makePyramid(71,4,60)
 ]
 
 var revealingObjs = [
-  makeCube(76,-31,100),
-  makeCube(140,70,-200),
-  makeCube(-153,54,-300),
-  makeCube(-130,63,0),
-  makeCube(-81,-63,10)
+  makeCube(67,-28,100),
+  makeCube(152,61,-200),
+  makeCube(-111,33,-300),
+  makeCube(-112,54,0),
+  makeCube(6,-18,10)
 ]
 
+var dots = []
+for (var i = 0; i < 50; i++) {
+  var p = pos()
+  dots.push(makeParticle(p.x, p.y, p.z))
+}
+
 $(document).on('ready', function(){
-  makeScene('.scene', connectionObjs.concat(awarenessObjs).concat(buildingObjs).concat(understandingObjs).concat(revealingObjs))
+  makeScene('.scene', [].concat(connectionObjs).concat(awarenessObjs).concat(buildingObjs).concat(understandingObjs).concat(revealingObjs))
 })
 
 var data = {

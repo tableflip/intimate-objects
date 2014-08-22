@@ -284,6 +284,17 @@ body.practice{
     margin:20px 0;
     font-weight: 200;
     cursor: pointer;
+    &:hover{
+      border-color:@link-hover-color;
+      color: @link-hover-color;
+    }
+    &.disabled{
+      opacity:0.5;
+      &:hover{
+        border-color:#333;
+        color:#333;
+      }
+    }
   }
   .inspiration {
     background: #000;
@@ -346,6 +357,9 @@ body.practice{
       padding: 8px;
     }
   }
+  .card.over .side{
+    border: 1px solid @link-hover-color;
+  }
   .card.over .side.front {
     -webkit-transform:rotatey(-180deg);
     transform:rotatey(-180deg);
@@ -354,137 +368,48 @@ body.practice{
     -webkit-transform:rotatey(0);
     transform:rotatey(0);
   }
+
   .side.circle {
-    background-image: url(../images/bg-card-circle.png);
+    background-image: url(../images/cards/bg-card-circle.png);
   }
+  .card:hover .side.circle{
+    background-image: url(../images/cards/card_circle_green_01.png);
+  }
+
   .side.diagonal-bottom-left-top-right {
     background-image: url(../images/bg-card-diagonal-bottom-left-top-right.png);
   }
+  .card:hover .side.diagonal-bottom-left-top-right{
+    background-image: url(../images/cards/card_lines_green_bottom_left.png);
+  }
+
   .side.diagonal-top-left-bottom-right {
     background-image: url(../images/bg-card-diagonal-top-left-bottom-right.png);
   }
+  .card:hover .side.diagonal-top-left-bottom-right{
+    background-image: url(../images/cards/card_lines_green_top_left.png);
+  }
+
   .side.horizontal {
     background-image: url(../images/bg-card-horizontal.png);
   }
+  .card:hover .side.horizontal{
+    background-image: url(../images/cards/card_lines_horizontal.png);
+  }
+
   .side.vertical {
     background-image: url(../images/bg-card-vertical.png);
   }
+  .card:hover .side.vertical{
+    background-image: url(../images/cards/card_lines_green_vertical.png);
+  }
+
   .shapes {
     position: relative;
 
     .scene {
       position: relative;
       width: 940px;
-
-      a {
-        position: absolute;
-        //background: red;
-        width: 10px;
-        height: 10px;
-        
-        &[href="#connection-0"] {
-          top: 7px;
-          left: 282px;
-          width: 65px;
-          height:650px;
-        }
-        &[href="#connection-1"] {
-          top: 9px;
-          left: 415px;
-          width: 80px;
-          height: 76px;
-        }
-        &[href="#connection-2"] {
-          top: 137px;
-          left: 283px;
-          width: 80px;
-          height: 80px;
-        }
-        &[href="#connection-3"] {
-          top: 85px;
-          left: 354px;
-          width: 88px;
-          height: 81px;
-        }
-        &[href="#awareness-0"] {
-          top: 7px;
-          left: 21px;
-          width: 110px;
-          height: 95px;
-        }
-        &[href="#awareness-1"] {
-          top: 10px;
-          left: 144px;
-          width: 88px;
-          height: 91px;
-        }
-        &[href="#building-0"] {
-          top: 146px;
-          left: 34px;
-          width: 107px;
-          height: 97px;
-        }
-        &[href="#building-1"] {
-          top: 133px;
-          left: 158px;
-          width: 66px;
-          height: 70px;
-        }
-        &[href="#building-2"] {
-          top: 222px;
-          left: 143px;
-          width: 120px;
-          height: 119px;
-        }
-        &[href="#understanding-0"] {
-          top: 150px;
-          left: 485px;
-          width: 78px;
-          height: 70px;
-        }
-        &[href="#understanding-1"] {
-          top: 204px;
-          left: 408px;
-          width: 96px;
-          height: 89px;
-        }
-        &[href="#understanding-2"] {
-          top: 222px;
-          left: 545px;
-          width: 109px;
-          height: 105px;
-        }
-        &[href="#revealing-0"] {
-          top: 34px;
-          left: 623px;
-          width: 118px;
-          height: 116px;
-        }
-        &[href="#revealing-1"] {
-          top: 13px;
-          left: 742px;
-          width: 69px;
-          height: 67px;
-        }
-        &[href="#revealing-2"] {
-          top: 150px;
-          left: 629px;
-          width: 74px;
-          height: 71px;
-        }
-        &[href="#revealing-3"] {
-          top: 109px;
-          left: 716px;
-          width: 102px;
-          height: 96px;
-        }
-        &[href="#revealing-4"] {
-          top: 205px;
-          left: 750px;
-          width: 108px;
-          height: 104px;
-        }
-      }
     }
     h4 {
       text-align: center;
@@ -535,22 +460,22 @@ body.practice{
         margin-bottom: 30px;
       }
       .key{
-        background: url(/images/inspiration/sphere.png) no-repeat;
+        background: url(../images/inspiration/sphere.png) no-repeat;
         background-size: 50px;
         padding: 0 0 0 65px;
         min-height: 55px;
       }
       .understanding{
-        background-image: url(/images/inspiration/pyramid.png);
+        background-image: url(../images/inspiration/pyramid.png);
       }
       .revealing{
-        background-image: url(/images/inspiration/cube.png);
+        background-image: url(../images/inspiration/cube.png);
       }
       .awareness{
-        background-image: url(/images/inspiration/cylinderish.png);
+        background-image: url(../images/inspiration/cylinderish.png);
       }
       .building{
-        background-image: url(/images/inspiration/torus.png);
+        background-image: url(../images/inspiration/torus.png);
       }
     }
     svg{

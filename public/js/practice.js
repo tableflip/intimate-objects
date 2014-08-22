@@ -33,6 +33,11 @@ function makeScene (selector, shapes) {
     scene.add(shape)
   })
 
+//  for (var i = 0; i < 1; i++) {
+//    var p = pos()
+//    scene.add(makeParticle(0, 0, 0))
+//  }
+
 // add the output of the renderer to the html element
   $(selector).append(renderer.domElement);
 
@@ -127,6 +132,14 @@ function makeScene (selector, shapes) {
 
 }
 
+function pos () {
+  return {
+    x: Math.random(),
+    y: Math.random(),
+    z: Math.random()
+  }
+}
+
 function makeShape (geometry, x, y, z) {
   var material = new THREE.MeshBasicMaterial({color: 0x222222, wireframe:true, wireframeLinewidth: 1})
   var obj = new THREE.Mesh(geometry, material)
@@ -169,6 +182,22 @@ function makeSphere (x, y, z) {
   var size = 14;
   var geometry = new THREE.SphereGeometry(size);
   return makeShape(geometry, x,y,z)
+}
+
+function makeParticle (x,y,z) {
+  var PI2 = Math.PI * 2;
+  var particleMaterial = new THREE.SpriteCanvasMaterial({
+    color: 0x000000,
+    program: function ( context ) {
+      context.beginPath();
+      context.arc( 0, 0, 0.5, 0, PI2, true );
+      context.fill();
+    }
+  })
+  var particle = new THREE.Sprite( particleMaterial );
+  particle.position.set(x,y,z)
+  particle.scale.x = particle.scale.y = 16;
+  return particle
 }
 
 /*if (window.innerWidth < 600) return;*/

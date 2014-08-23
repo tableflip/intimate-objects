@@ -440,10 +440,17 @@ body.practice{
       top:15px;
       right:20px;
       z-index: 1;
+      &:hover{
+        color: @link-hover-color;
+      }
     }
     h3 {
       border: 0;
       padding: 0;
+      &:hover{
+        color: inherit;
+        cursor: default;
+      }
     }
   }
   #mask {
